@@ -221,7 +221,7 @@ const AdminDashboard = () => {
                       />
                     </div>
                     
-                    <div className="text-center text-gray-500">أو</div>
+                    <div className="text-center text-gray-500">or</div>
 {/*                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
