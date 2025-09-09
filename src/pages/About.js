@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
@@ -6,14 +7,41 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About <span className="text-brand-red">Stick</span> With <span className="text-brand-gold">Mo</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              About <motion.span 
+                className="text-brand-red"
+                whileHover={{ scale: 1.1, rotate: 2 }}
+                transition={{ duration: 0.2 }}
+              >
+                Stick
+              </motion.span> With <motion.span 
+                className="text-brand-gold"
+                whileHover={{ scale: 1.1, rotate: -2 }}
+                transition={{ duration: 0.2 }}
+              >
+                Mo
+              </motion.span>
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               We're passionate about helping you personalize your devices with premium quality laptop accessories that reflect your unique style.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Story Section */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-12">
@@ -36,43 +64,73 @@ const About = () => {
           </div>
 
           {/* Values Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center">
-              <div className="bg-brand-red text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, staggerChildren: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="text-center group"
+              whileHover={{ y: -10, scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div 
+                className="bg-brand-red text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">Quality First</h3>
               <p className="text-gray-600">
                 We use only premium materials and rigorous quality control to ensure every product meets our high standards.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="text-center">
-              <div className="bg-brand-gold text-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div 
+              className="text-center group"
+              whileHover={{ y: -10, scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div 
+                className="bg-brand-gold text-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">Customer Love</h3>
               <p className="text-gray-600">
                 Your satisfaction is our priority. We're committed to providing exceptional customer service and support.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="text-center">
-              <div className="bg-brand-black text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div 
+              className="text-center group"
+              whileHover={{ y: -10, scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div 
+                className="bg-brand-black text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold mb-2">Innovation</h3>
               <p className="text-gray-600">
                 We continuously innovate to bring you the latest designs and cutting-edge materials.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Team Section */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-12">
