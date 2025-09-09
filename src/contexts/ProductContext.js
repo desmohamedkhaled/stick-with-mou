@@ -24,7 +24,7 @@ export const ProductProvider = ({ children }) => {
         {
           id: 1,
           name: "Retro Gaming Sticker Pack",
-          price: 12.99,
+          price: 650,
           category: "stickers",
           image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=300&fit=crop",
           description: "A collection of retro gaming themed stickers for your laptop",
@@ -33,7 +33,7 @@ export const ProductProvider = ({ children }) => {
         {
           id: 2,
           name: "Minimalist Black Laptop Skin",
-          price: 24.99,
+          price: 1250,
           category: "laptop-skins",
           image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
           description: "Sleek black matte finish laptop skin for MacBook Pro",
@@ -42,7 +42,7 @@ export const ProductProvider = ({ children }) => {
         {
           id: 3,
           name: "Gold Accent Keyboard Skin",
-          price: 18.99,
+          price: 950,
           category: "keyboard-skins",
           image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
           description: "Premium gold accent keyboard protector",
@@ -51,7 +51,7 @@ export const ProductProvider = ({ children }) => {
         {
           id: 4,
           name: "Nature Photography Stickers",
-          price: 9.99,
+          price: 500,
           category: "stickers",
           image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
           description: "Beautiful nature photography stickers set",
@@ -60,7 +60,7 @@ export const ProductProvider = ({ children }) => {
         {
           id: 5,
           name: "Carbon Fiber Laptop Skin",
-          price: 29.99,
+          price: 1500,
           category: "laptop-skins",
           image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
           description: "High-quality carbon fiber texture laptop skin",
@@ -69,7 +69,7 @@ export const ProductProvider = ({ children }) => {
         {
           id: 6,
           name: "RGB Gaming Keyboard Skin",
-          price: 22.99,
+          price: 1150,
           category: "keyboard-skins",
           image: "https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=400&h=300&fit=crop",
           description: "Gaming-themed keyboard skin with RGB accents",

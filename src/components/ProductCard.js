@@ -146,7 +146,7 @@ const ProductCard = ({ product, index = 0 }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 + index * 0.1 }}
           >
-            ${product.price}
+            {product.price} EGP
           </motion.span>
           
           <motion.button

@@ -12,12 +12,28 @@ const AdminDashboard = () => {
     image: '',
     stock: ''
   });
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleInputChange = (e) => {
     setNewProduct({
       ...newProduct,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target.result);
+        setNewProduct({
+          ...newProduct,
+          image: e.target.result
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleAddProduct = (e) => {
@@ -32,6 +48,7 @@ const AdminDashboard = () => {
         image: '',
         stock: ''
       });
+      setImagePreview(null);
       setShowAddForm(false);
     }
   };

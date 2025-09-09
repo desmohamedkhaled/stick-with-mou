@@ -195,8 +195,8 @@ const QuickView = ({ product, isOpen, onClose }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <span className="text-4xl font-bold text-brand-red">${product.price}</span>
-                    <span className="text-lg text-gray-500 line-through ml-2">${(product.price * 1.5).toFixed(2)}</span>
+                    <span className="text-4xl font-bold text-brand-red">{product.price} EGP</span>
+                    <span className="text-lg text-gray-500 line-through ml-2">{(product.price * 1.5).toFixed(0)} EGP</span>
                   </motion.div>
 
                   {/* Description */}
