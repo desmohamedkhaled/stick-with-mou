@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 
 const Cart = () => {
-  const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, getCartSummary, clearCart } = useCart();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+  
+  const cartSummary = getCartSummary();
 
   const handleCheckout = () => {
     setIsCheckingOut(true);
@@ -140,21 +142,21 @@ const Cart = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-dark-text-secondary">Subtotal</span>
-                  <span className="font-medium text-gray-900 dark:text-dark-text">{getCartTotal()} EGP</span>
+                  <span className="font-medium text-gray-900 dark:text-dark-text">{cartSummary.subtotal} EGP</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-dark-text-secondary">Shipping</span>
                   <span className="font-medium text-gray-900 dark:text-dark-text">50 EGP</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-dark-text-secondary">Tax</span>
-                  <span className="font-medium text-gray-900 dark:text-dark-text">{Math.round(getCartTotal() * 0.14)} EGP</span>
+                  <span className="text-gray-600 dark:text-dark-text-secondary">Tax (14%)</span>
+                  <span className="font-medium text-gray-900 dark:text-dark-text">{Math.round(cartSummary.tax)} EGP</span>
                 </div>
                 <div className="border-t border-gray-200 dark:border-dark-border pt-3">
                   <div className="flex justify-between">
                     <span className="text-lg font-semibold text-gray-900 dark:text-dark-text">Total</span>
                     <span className="text-lg font-semibold text-brand-red">
-                      {getCartTotal() + 50 + Math.round(getCartTotal() * 0.14)} EGP
+                      {cartSummary.total + 50} EGP
                     </span>
                   </div>
                 </div>

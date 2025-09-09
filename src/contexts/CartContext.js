@@ -71,6 +71,42 @@ export const CartProvider = ({ children }) => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
 
+  const isInCart = (productId) => {
+    return cartItems.some(item => item.id === productId);
+  };
+
+  const getCartItemQuantity = (productId) => {
+    const item = cartItems.find(item => item.id === productId);
+    return item ? item.quantity : 0;
+  };
+
+  const getCartSubtotal = () => {
+    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
+  const getCartTax = (taxRate = 0.14) => {
+    return getCartSubtotal() * taxRate;
+  };
+
+  const getCartTotalWithTax = (taxRate = 0.14) => {
+    return getCartSubtotal() + getCartTax(taxRate);
+  };
+
+  const getCartSummary = () => {
+    const subtotal = getCartSubtotal();
+    const tax = getCartTax();
+    const total = getCartTotalWithTax();
+    const itemsCount = getCartItemsCount();
+
+    return {
+      subtotal,
+      tax,
+      total,
+      itemsCount,
+      items: cartItems
+    };
+  };
+
   const value = {
     cartItems,
     addToCart,
@@ -78,7 +114,13 @@ export const CartProvider = ({ children }) => {
     updateQuantity,
     clearCart,
     getCartTotal,
-    getCartItemsCount
+    getCartItemsCount,
+    isInCart,
+    getCartItemQuantity,
+    getCartSubtotal,
+    getCartTax,
+    getCartTotalWithTax,
+    getCartSummary
   };
 
   return (

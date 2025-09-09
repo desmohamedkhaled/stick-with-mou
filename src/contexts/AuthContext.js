@@ -78,6 +78,24 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
+    // Clear cart when user logs out
+    localStorage.removeItem('cart');
+  };
+
+  const isAuthenticated = () => {
+    return !!user;
+  };
+
+  const isAdmin = () => {
+    return user && user.role === 'admin';
+  };
+
+  const updateUserProfile = (updatedData) => {
+    if (!user) return;
+    
+    const updatedUser = { ...user, ...updatedData };
+    setUser(updatedUser);
+    localStorage.setItem('user', JSON.stringify(updatedUser));
   };
 
   const value = {
@@ -85,7 +103,10 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     logout,
-    loading
+    loading,
+    isAuthenticated,
+    isAdmin,
+    updateUserProfile
   };
 
   return (
