@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../build')));
 
 // Initialize database
 const db = new DatabaseService();
@@ -245,7 +244,10 @@ app.get('/api/analytics/products', async (req, res) => {
   }
 });
 
-// Serve React app for all other routes
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, '../build')));
+
+// Serve React app for all other routes (SPA routing)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
