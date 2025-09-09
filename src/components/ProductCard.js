@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import QuickView from './QuickView';
 
 const ProductCard = ({ product, index = 0 }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
+  const [showQuickView, setShowQuickView] = useState(false);
 
   const handleAddToCart = () => {
     addToCart(product);
@@ -118,7 +120,7 @@ const ProductCard = ({ product, index = 0 }) => {
         
         {/* Overlay on hover */}
         <motion.div 
-          className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+          className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center space-x-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.2 }}
@@ -126,13 +128,24 @@ const ProductCard = ({ product, index = 0 }) => {
           <motion.button
             onClick={(e) => {
               e.stopPropagation();
-              navigate(`/product/${product.id}`);
+              setShowQuickView(true);
             }}
             className="bg-white dark:bg-dark-surface text-brand-black dark:text-dark-text px-4 py-2 rounded-lg font-semibold shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View Product
+            Quick View
+          </motion.button>
+          <motion.button
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/product/${product.id}`);
+            }}
+            className="bg-brand-red text-white px-4 py-2 rounded-lg font-semibold shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View Details
           </motion.button>
         </motion.div>
       </div>
@@ -229,8 +242,16 @@ const ProductCard = ({ product, index = 0 }) => {
           </div>
         </motion.div>
       </div>
+      
+      {/* Quick View Modal */}
+      <QuickView 
+        product={product} 
+        isOpen={showQuickView} 
+        onClose={() => setShowQuickView(false)} 
+      />
     </motion.div>
   );
 };
 
 export default ProductCard;
+

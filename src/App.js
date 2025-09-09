@@ -8,6 +8,8 @@ import { ThemeProvider } from './contexts/ThemeContext';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Breadcrumb from './components/Breadcrumb';
+import BackToTop from './components/BackToTop';
 
 // Pages
 import Home from './pages/Home';
@@ -31,6 +33,7 @@ function App() {
             <Router>
               <div className="min-h-screen bg-white dark:bg-dark-bg transition-colors duration-300">
                 <Navbar />
+                <Breadcrumb />
                 <main>
                   <Routes>
                     <Route path="/" element={<Home />} />
@@ -60,6 +63,7 @@ function App() {
                   </Routes>
                 </main>
                 <Footer />
+                <BackToTop />
               </div>
             </Router>
           </CartProvider>
