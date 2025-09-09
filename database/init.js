@@ -184,4 +184,22 @@ class Database {
   }
 }
 
+// Initialize database if this file is run directly
+if (require.main === module) {
+  const db = new Database();
+  db.init()
+    .then(() => {
+      console.log('Database initialization completed successfully');
+      return db.close();
+    })
+    .then(() => {
+      console.log('Database connection closed');
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error('Database initialization failed:', error);
+      process.exit(1);
+    });
+}
+
 module.exports = Database;

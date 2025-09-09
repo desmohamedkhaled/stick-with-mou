@@ -13,6 +13,8 @@ export const useProducts = () => {
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     loadProducts();
@@ -20,13 +22,18 @@ export const ProductProvider = ({ children }) => {
 
   const loadProducts = async () => {
     try {
+      setLoading(true);
+      setError(null);
       const products = await databaseService.getAllProducts();
       setProducts(products);
     } catch (error) {
       console.error('Error loading products:', error);
+      setError(error.message);
       // Fallback to localStorage
       const fallbackProducts = await databaseService.getProductsFallback();
       setProducts(fallbackProducts);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -88,17 +95,14 @@ export const ProductProvider = ({ children }) => {
     return products.filter(product => product.category_slug === category);
   };
 
-  const getTotalSales = () => {
-    // Return a promise that resolves to the sales value
-    return new Promise(async (resolve) => {
-      try {
-        const result = await databaseService.getTotalSales();
-        resolve(result.totalSales || 0);
-      } catch (error) {
-        console.error('Error getting total sales:', error);
-        resolve(12450.99); // Fallback value
-      }
-    });
+  const getTotalSales = async () => {
+    try {
+      const result = await databaseService.getTotalSales();
+      return result.totalSales || 0;
+    } catch (error) {
+      console.error('Error getting total sales:', error);
+      return 12450.99; // Fallback value
+    }
   };
 
   const getTotalStock = () => {
@@ -116,12 +120,15 @@ export const ProductProvider = ({ children }) => {
 
   const value = {
     products,
+    loading,
+    error,
     addProduct,
     updateProduct,
     deleteProduct,
     getProductsByCategory,
     getTotalSales,
-    getTotalStock
+    getTotalStock,
+    loadProducts
   };
 
   return (

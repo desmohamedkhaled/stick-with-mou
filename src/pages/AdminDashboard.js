@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useProducts } from '../contexts/ProductContext';
 
 const AdminDashboard = () => {
-  const { products, addProduct, deleteProduct, getTotalSales, getTotalStock } = useProducts();
+  const { products, addProduct, deleteProduct, getTotalSales, getTotalStock, loading } = useProducts();
+  const [totalSales, setTotalSales] = useState(0);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newProduct, setNewProduct] = useState({
     name: '',
@@ -13,6 +14,14 @@ const AdminDashboard = () => {
     stock: ''
   });
   const [imagePreview, setImagePreview] = useState(null);
+
+  useEffect(() => {
+    const loadTotalSales = async () => {
+      const sales = await getTotalSales();
+      setTotalSales(sales);
+    };
+    loadTotalSales();
+  }, [getTotalSales]);
 
   const handleInputChange = (e) => {
     setNewProduct({
@@ -59,6 +68,17 @@ const AdminDashboard = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-brand-red mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -78,7 +98,7 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-semibold text-gray-900">Total Sales</h3>
-                <p className="text-2xl font-bold text-brand-red">EGP{(getTotalSales() || 0).toFixed(2)}</p>
+                <p className="text-2xl font-bold text-brand-red">EGP{totalSales.toFixed(2)}</p>
               </div>
             </div>
           </div>
