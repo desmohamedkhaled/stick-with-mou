@@ -78,7 +78,7 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-semibold text-gray-900">Total Sales</h3>
-                <p className="text-2xl font-bold text-brand-red">${getTotalSales().toFixed(2)}</p>
+                <p className="text-2xl font-bold text-brand-red">EGP{getTotalSales().toFixed(2)}</p>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ const AdminDashboard = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Price ($)
+                    Price (EGP)
                   </label>
                   <input
                     type="number"
@@ -314,7 +314,7 @@ const AdminDashboard = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      ${product.price}
+                      EGP{product.price}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {product.stock}
