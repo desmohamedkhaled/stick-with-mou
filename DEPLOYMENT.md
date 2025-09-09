@@ -1,20 +1,18 @@
 # Deployment Guide - Stick with Mo
 
-This guide covers different deployment options for the Stick with Mo e-commerce application.
+This guide covers different deployment options for the Stick with Mo frontend-only e-commerce application.
 
 ## 🚀 Deployment Options
 
 ### 1. Local Development
 ```bash
-npm run dev
+npm start
 ```
-- API Server: http://localhost:3001
 - React App: http://localhost:3000
 
 ### 2. Production Build
 ```bash
 npm run build
-npm run server
 ```
 
 ## ☁️ Cloud Deployment

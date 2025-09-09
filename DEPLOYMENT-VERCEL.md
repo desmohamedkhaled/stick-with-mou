@@ -29,19 +29,15 @@ git push -u origin main
 4. **اختر المشروع من GitHub**
 5. **اضغط "Import"**
 
-### 3. إعداد متغيرات البيئة
+### 3. إعداد المشروع
 
 في Vercel Dashboard:
 
 1. **اذهب إلى Project Settings**
-2. **اضغط على "Environment Variables"**
-3. **أضف المتغيرات التالية:**
+2. **تأكد من أن Build Command هو: `npm run build`**
+3. **تأكد من أن Output Directory هو: `build`**
 
-```
-NODE_ENV = production
-REACT_APP_API_URL = https://your-project.vercel.app/api
-PORT = 3001
-```
+**لا حاجة لمتغيرات البيئة** - المشروع يعمل بدون backend!
 
 ### 4. إعداد GitHub Actions (اختياري)
 
