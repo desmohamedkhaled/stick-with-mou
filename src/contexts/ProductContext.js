@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import databaseService from '../services/databaseService';
 
 const ProductContext = createContext();
 
@@ -24,14 +23,63 @@ export const ProductProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const products = await databaseService.getAllProducts();
-      setProducts(products);
+      
+      // Load products from localStorage
+      const storedProducts = localStorage.getItem('products');
+      if (storedProducts) {
+        setProducts(JSON.parse(storedProducts));
+      } else {
+        // Initialize with sample products if none exist
+        const sampleProducts = [
+          {
+            id: 1,
+            name: "Retro Gaming Sticker Pack",
+            price: 650,
+            original_price: 850,
+            category: "stickers",
+            category_slug: "stickers",
+            description: "A collection of retro gaming themed stickers for your laptop, featuring classic arcade games and pixel art designs.",
+            image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=300&fit=crop",
+            primary_image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=300&fit=crop",
+            stock: 50,
+            stock_quantity: 50,
+            is_featured: true
+          },
+          {
+            id: 2,
+            name: "Minimalist Black Laptop Skin",
+            price: 1250,
+            original_price: null,
+            category: "laptop-skins",
+            category_slug: "laptop-skins",
+            description: "Sleek black matte finish laptop skin for MacBook Pro, providing protection while maintaining a professional look.",
+            image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
+            primary_image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
+            stock: 25,
+            stock_quantity: 25,
+            is_featured: true
+          },
+          {
+            id: 3,
+            name: "Gold Accent Keyboard Skin",
+            price: 950,
+            original_price: 1200,
+            category: "keyboard-skins",
+            category_slug: "keyboard-skins",
+            description: "Premium gold accent keyboard protector with precise cutouts for all keys and touchpad.",
+            image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
+            primary_image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
+            stock: 30,
+            stock_quantity: 30,
+            is_featured: false
+          }
+        ];
+        setProducts(sampleProducts);
+        localStorage.setItem('products', JSON.stringify(sampleProducts));
+      }
     } catch (error) {
       console.error('Error loading products:', error);
       setError(error.message);
-      // Fallback to localStorage
-      const fallbackProducts = await databaseService.getProductsFallback();
-      setProducts(fallbackProducts);
     } finally {
       setLoading(false);
     }
@@ -39,54 +87,45 @@ export const ProductProvider = ({ children }) => {
 
   const addProduct = async (product) => {
     try {
-      const newProduct = await databaseService.createProduct({
-        ...product,
-        slug: product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
-        stock_quantity: parseInt(product.stock) || 0,
-        category_id: getCategoryIdByName(product.category)
-      });
-      await loadProducts(); // Reload products from database
-      return newProduct;
-    } catch (error) {
-      console.error('Error adding product:', error);
-      // Fallback to localStorage
       const newProduct = {
         ...product,
         id: Date.now(),
-        stock: parseInt(product.stock) || 0
+        stock: parseInt(product.stock) || 0,
+        stock_quantity: parseInt(product.stock) || 0,
+        category_slug: product.category,
+        primary_image: product.image
       };
       const updatedProducts = [...products, newProduct];
       setProducts(updatedProducts);
-      await databaseService.saveProductsFallback(updatedProducts);
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
       return newProduct;
+    } catch (error) {
+      console.error('Error adding product:', error);
+      throw error;
     }
   };
 
   const updateProduct = async (id, updatedProduct) => {
     try {
-      await databaseService.updateProduct(id, updatedProduct);
-      await loadProducts(); // Reload products from database
-    } catch (error) {
-      console.error('Error updating product:', error);
-      // Fallback to localStorage
       const updatedProducts = products.map(product =>
         product.id === id ? { ...product, ...updatedProduct } : product
       );
       setProducts(updatedProducts);
-      await databaseService.saveProductsFallback(updatedProducts);
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+    } catch (error) {
+      console.error('Error updating product:', error);
+      throw error;
     }
   };
 
   const deleteProduct = async (id) => {
     try {
-      await databaseService.deleteProduct(id);
-      await loadProducts(); // Reload products from database
-    } catch (error) {
-      console.error('Error deleting product:', error);
-      // Fallback to localStorage
       const updatedProducts = products.filter(product => product.id !== id);
       setProducts(updatedProducts);
-      await databaseService.saveProductsFallback(updatedProducts);
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+    } catch (error) {
+      console.error('Error deleting product:', error);
+      throw error;
     }
   };
 
@@ -96,27 +135,14 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getTotalSales = async () => {
-    try {
-      const result = await databaseService.getTotalSales();
-      return result.totalSales || 0;
-    } catch (error) {
-      console.error('Error getting total sales:', error);
-      return 12450.99; // Fallback value
-    }
+    // Return a static value for demo purposes
+    return 12450.99;
   };
 
   const getTotalStock = () => {
     return products.reduce((total, product) => total + (product.stock_quantity || product.stock || 0), 0);
   };
 
-  const getCategoryIdByName = (categoryName) => {
-    const categoryMap = {
-      'stickers': 1,
-      'laptop-skins': 2,
-      'keyboard-skins': 3
-    };
-    return categoryMap[categoryName] || 1;
-  };
 
   const value = {
     products,
