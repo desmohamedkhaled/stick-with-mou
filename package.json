@@ -25,7 +25,8 @@
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "db:init": "node database/init.js",
     "db:reset": "rm -f database/stickwithmo.db && node database/init.js",
-    "setup": "node setup-database.js"
+    "setup": "node setup-database.js",
+    "vercel-build": "npm run build && npm run db:init"
   },
   "eslintConfig": {
     "extends": [
