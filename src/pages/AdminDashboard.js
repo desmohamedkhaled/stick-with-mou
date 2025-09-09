@@ -314,7 +314,7 @@ const AdminDashboard = () => {
                         <div className="flex-shrink-0 h-12 w-12">
                           <img
                             className="h-12 w-12 rounded-lg object-cover"
-                            src={product.image}
+                            src={product.primary_image || product.image || 'https://via.placeholder.com/48x48?text=No+Image'}
                             alt={product.name}
                           />
                         </div>
@@ -330,14 +330,14 @@ const AdminDashboard = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 capitalize">
-                        {product.category.replace('-', ' ')}
+                        {(product.category_slug || product.category || '').replace('-', ' ')}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       EGP{product.price}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {product.stock}
+                      {product.stock_quantity || product.stock || 0}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button

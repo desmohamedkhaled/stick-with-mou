@@ -89,7 +89,7 @@ const ProductCard = ({ product, index = 0 }) => {
     >
       <div className="relative overflow-hidden">
         <motion.img
-          src={product.image}
+          src={product.primary_image || product.image || 'https://via.placeholder.com/300x200?text=No+Image'}
           alt={product.name}
           className="w-full h-48 object-cover"
           variants={imageVariants}
@@ -179,9 +179,9 @@ const ProductCard = ({ product, index = 0 }) => {
             >
               {product.price} EGP
             </motion.span>
-            {product.originalPrice && (
+            {product.original_price && (
               <span className="text-sm text-gray-500 dark:text-dark-text-secondary line-through">
-                {product.originalPrice} EGP
+                {product.original_price} EGP
               </span>
             )}
           </div>
@@ -223,7 +223,7 @@ const ProductCard = ({ product, index = 0 }) => {
           transition={{ delay: 0.6 + index * 0.1 }}
         >
           <span className="text-xs text-gray-500 dark:text-dark-text-secondary capitalize">
-            {product.category.replace('-', ' ')}
+            {(product.category_slug || product.category || '').replace('-', ' ')}
           </span>
           <div className="flex items-center space-x-1">
             {[...Array(5)].map((_, i) => (
