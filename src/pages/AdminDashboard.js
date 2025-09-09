@@ -206,12 +206,12 @@ const AdminDashboard = () => {
 
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    صورة المنتج
-                  </label>
+                      Product Image
+                      </label>
                   <div className="space-y-3">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        رفع صورة من الجهاز:
+                       Upload from device:
                       </label>
                       <input
                         type="file"
