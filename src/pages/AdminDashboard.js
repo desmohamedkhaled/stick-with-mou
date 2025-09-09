@@ -78,7 +78,7 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-semibold text-gray-900">Total Sales</h3>
-                <p className="text-2xl font-bold text-brand-red">${getTotalSales().toFixed(2)}</p>
+                <p className="text-2xl font-bold text-brand-red">EGP{getTotalSales().toFixed(2)}</p>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ const AdminDashboard = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Price ($)
+                    Price (EGP)
                   </label>
                   <input
                     type="number"
@@ -206,12 +206,12 @@ const AdminDashboard = () => {
 
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    صورة المنتج
-                  </label>
+                      Product Image
+                      </label>
                   <div className="space-y-3">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        رفع صورة من الجهاز:
+                       Upload from device:
                       </label>
                       <input
                         type="file"
@@ -221,7 +221,7 @@ const AdminDashboard = () => {
                       />
                     </div>
                     
-                    <div className="text-center text-gray-500">أو</div>
+                    <div className="text-center text-gray-500">or</div>
 {/*                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -314,7 +314,7 @@ const AdminDashboard = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      ${product.price}
+                      EGP{product.price}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {product.stock}
