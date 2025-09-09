@@ -1,6 +1,23 @@
-# Deployment Guide - Stick with Mo
+# 🚀 Deployment Guide - Stick with Mo
 
 This guide covers different deployment options for the Stick with Mo frontend-only e-commerce application.
+
+## 🎯 Quick Deploy to Vercel
+
+### 1. Push to GitHub
+```bash
+git add .
+git commit -m "Deploy to Vercel"
+git push origin main
+```
+
+### 2. Connect to Vercel
+1. Go to [vercel.com](https://vercel.com)
+2. Import your GitHub repository
+3. Vercel will auto-deploy!
+
+### 3. Live Site
+Your site will be available at: `https://your-project.vercel.app`
 
 ## 🚀 Deployment Options
 

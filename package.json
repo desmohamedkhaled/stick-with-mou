@@ -1,7 +1,11 @@
 {
   "name": "stick-with-mo",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "A modern, responsive frontend-only e-commerce website for laptop stickers, skins, and keyboard covers",
+  "keywords": ["react", "ecommerce", "stickers", "laptop", "frontend", "tailwind", "framer-motion"],
+  "author": "Stick with Mo Team",
+  "homepage": "https://stick-with-mo.vercel.app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

@@ -135,14 +135,31 @@ npm start
 npm run build
 ```
 
-### Static Hosting
-This is a frontend-only application that can be deployed to any static hosting service:
-- **Vercel** - Recommended for React apps
+### Deploy to Vercel (Recommended)
+
+1. **Push to GitHub**:
+```bash
+git add .
+git commit -m "Deploy to Vercel"
+git push origin main
+```
+
+2. **Connect to Vercel**:
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Vercel will auto-deploy on every push!
+
+3. **Live URL**: Your site will be available at `https://your-project.vercel.app`
+
+### Other Hosting Options
 - **Netlify** - Great for static sites
 - **GitHub Pages** - Free hosting for public repos
 - **Firebase Hosting** - Google's hosting platform
 
 No server configuration needed - just build and deploy the static files!
+
+### 🎯 Live Demo
+**Visit the live site**: [https://stick-with-mo.vercel.app](https://stick-with-mo.vercel.app)
 
 ## 📱 Demo Accounts
 
