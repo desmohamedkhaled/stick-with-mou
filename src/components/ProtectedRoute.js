@@ -24,4 +24,9 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
   return children;
 };
 
-export default ProtectedRoute;
+export default ProtectedRoute;+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/desmohamedkhaled/stick-with-mo.git
+git push -u origin main
