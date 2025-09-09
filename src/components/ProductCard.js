@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import { getProductImage, formatCategory } from '../utils/dataSync';
 import QuickView from './QuickView';
 
 const ProductCard = ({ product, index = 0 }) => {
@@ -89,14 +90,14 @@ const ProductCard = ({ product, index = 0 }) => {
     >
       <div className="relative overflow-hidden">
         <motion.img
-          src={product.primary_image || product.image || 'https://via.placeholder.com/300x200?text=No+Image'}
+          src={getProductImage(product)}
           alt={product.name}
           className="w-full h-48 object-cover"
           variants={imageVariants}
           whileHover="hover"
         />
         <motion.div 
-          className="absolute top-3 right-3 bg-brand-red text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
+          className="absolute top-3 right-3 bg-stiletto text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 + index * 0.1 }}
@@ -130,7 +131,7 @@ const ProductCard = ({ product, index = 0 }) => {
               e.stopPropagation();
               setShowQuickView(true);
             }}
-            className="bg-white dark:bg-dark-surface text-brand-black dark:text-dark-text px-4 py-2 rounded-lg font-semibold shadow-lg"
+            className="bg-white dark:bg-dark-surface text-william dark:text-dark-text px-4 py-2 rounded-lg font-semibold shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -141,7 +142,7 @@ const ProductCard = ({ product, index = 0 }) => {
               e.stopPropagation();
               navigate(`/product/${product.id}`);
             }}
-            className="bg-brand-red text-white px-4 py-2 rounded-lg font-semibold shadow-lg"
+            className="bg-stiletto text-white px-4 py-2 rounded-lg font-semibold shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -172,7 +173,7 @@ const ProductCard = ({ product, index = 0 }) => {
         <div className="flex items-center justify-between mb-4">
           <div className="flex flex-col">
             <motion.span 
-              className="text-2xl font-bold text-brand-red"
+              className="text-2xl font-bold text-stiletto"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 + index * 0.1 }}
@@ -191,7 +192,7 @@ const ProductCard = ({ product, index = 0 }) => {
             className={`px-4 py-2 rounded-lg font-semibold flex items-center space-x-2 transition-all duration-200 ${
               isAdded 
                 ? 'bg-green-500 text-white' 
-                : 'bg-brand-black dark:bg-dark-accent text-white hover:bg-gray-800 dark:hover:bg-dark-accent-hover'
+                : 'bg-william dark:bg-dark-accent text-white hover:bg-finch dark:hover:bg-dark-accent-hover'
             }`}
             variants={isAdded ? successVariants : buttonVariants}
             whileHover="hover"
@@ -223,7 +224,7 @@ const ProductCard = ({ product, index = 0 }) => {
           transition={{ delay: 0.6 + index * 0.1 }}
         >
           <span className="text-xs text-gray-500 dark:text-dark-text-secondary capitalize">
-            {(product.category_slug || product.category || '').replace('-', ' ')}
+            {formatCategory(product.category_slug || product.category)}
           </span>
           
           {/* Rating and Reviews */}

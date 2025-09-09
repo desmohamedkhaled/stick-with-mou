@@ -50,7 +50,7 @@ const Login = () => {
             Or{' '}
             <Link
               to="/register"
-              className="font-medium text-brand-red hover:text-red-700"
+              className="font-medium text-stiletto hover:text-chestnut-rose"
             >
               create a new account
             </Link>
@@ -80,7 +80,7 @@ const Login = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-red focus:border-brand-red sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-stiletto focus:border-stiletto sm:text-sm"
                   placeholder="Enter your email"
                 />
               </div>
@@ -99,7 +99,7 @@ const Login = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-red focus:border-brand-red sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-stiletto focus:border-stiletto sm:text-sm"
                   placeholder="Enter your password"
                 />
               </div>
@@ -111,7 +111,7 @@ const Login = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-brand-red focus:ring-brand-red border-gray-300 rounded"
+                  className="h-4 w-4 text-stiletto focus:ring-stiletto border-gray-300 rounded"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me
@@ -129,7 +129,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand-red hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-red disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-stiletto hover:bg-chestnut-rose focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stiletto disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="flex items-center">

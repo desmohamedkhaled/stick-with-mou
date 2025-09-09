@@ -20,13 +20,13 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               About <motion.span 
-                className="text-brand-red"
+                className="text-stiletto"
                 whileHover={{ scale: 1.1, rotate: 2 }}
                 transition={{ duration: 0.2 }}
               >
                 Stick
               </motion.span> With <motion.span 
-                className="text-brand-gold"
+                className="text-anzac"
                 whileHover={{ scale: 1.1, rotate: -2 }}
                 transition={{ duration: 0.2 }}
               >
@@ -77,7 +77,7 @@ const About = () => {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="bg-brand-red text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="bg-stiletto text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
@@ -97,7 +97,7 @@ const About = () => {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="bg-brand-gold text-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="bg-anzac text-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
@@ -117,7 +117,7 @@ const About = () => {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="bg-brand-black text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="bg-william text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
@@ -141,7 +141,7 @@ const About = () => {
                   <span className="text-2xl font-bold text-gray-500 dark:text-dark-text">MO</span>
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-dark-text">Mo Johnson</h3>
-                <p className="text-brand-red font-medium mb-2">Founder & CEO</p>
+                <p className="text-stiletto font-medium mb-2">Founder & CEO</p>
                 <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                   Passionate about design and technology, Mo started Stick With Mo to help people express their creativity.
                 </p>
@@ -152,7 +152,7 @@ const About = () => {
                   <span className="text-2xl font-bold text-gray-500 dark:text-dark-text">AS</span>
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-dark-text">Alex Smith</h3>
-                <p className="text-brand-red font-medium mb-2">Head of Design</p>
+                <p className="text-stiletto font-medium mb-2">Head of Design</p>
                 <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                   Creative visionary responsible for our unique product designs and brand aesthetic.
                 </p>
@@ -163,7 +163,7 @@ const About = () => {
                   <span className="text-2xl font-bold text-gray-500 dark:text-dark-text">SJ</span>
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-dark-text">Sarah Johnson</h3>
-                <p className="text-brand-red font-medium mb-2">Customer Success</p>
+                <p className="text-stiletto font-medium mb-2">Customer Success</p>
                 <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                   Dedicated to ensuring every customer has an amazing experience with our products.
                 </p>
@@ -172,14 +172,14 @@ const About = () => {
           </div>
 
           {/* Contact CTA */}
-          <div className="bg-gradient-to-r from-brand-black to-gray-800 dark:from-dark-surface dark:to-gray-700 text-white rounded-lg p-8 text-center">
+          <div className="bg-gradient-to-r from-william to-gray-800 dark:from-dark-surface dark:to-gray-700 text-white rounded-lg p-8 text-center">
             <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
             <p className="text-xl text-gray-300 mb-6">
               Have questions or want to collaborate? We'd love to hear from you!
             </p>
             <a
               href="/contact"
-              className="bg-brand-red text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+              className="bg-stiletto text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-chestnut-rose transition-colors duration-200"
             >
               Contact Us
             </a>

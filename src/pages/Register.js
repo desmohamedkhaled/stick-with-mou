@@ -57,9 +57,9 @@ const Register = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
           <div className="text-3xl font-bold mb-2">
-            <span className="text-brand-red">Stick</span>
-            <span className="text-brand-black"> With </span>
-            <span className="text-brand-gold">Mo</span>
+            <span className="text-stiletto">Stick</span>
+            <span className="text-william"> With </span>
+            <span className="text-anzac">Mo</span>
           </div>
           <h2 className="text-2xl font-bold text-gray-900">
             Create your account
@@ -98,7 +98,7 @@ const Register = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-red focus:border-brand-red sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-stiletto focus:border-stiletto sm:text-sm"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -117,7 +117,7 @@ const Register = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-red focus:border-brand-red sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-stiletto focus:border-stiletto sm:text-sm"
                   placeholder="Enter your email"
                 />
               </div>
@@ -136,7 +136,7 @@ const Register = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-red focus:border-brand-red sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-stiletto focus:border-stiletto sm:text-sm"
                   placeholder="Create a password"
                 />
               </div>
@@ -155,7 +155,7 @@ const Register = () => {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-red focus:border-brand-red sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-stiletto focus:border-stiletto sm:text-sm"
                   placeholder="Confirm your password"
                 />
               </div>
@@ -185,7 +185,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand-red hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-red disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-stiletto hover:bg-chestnut-rose focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stiletto disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="flex items-center">

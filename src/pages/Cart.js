@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import { getProductImage, formatCategory } from '../utils/dataSync';
 
 const Cart = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartSummary, clearCart } = useCart();
@@ -64,7 +65,7 @@ const Cart = () => {
                   <div key={item.id} className="p-6">
                     <div className="flex items-center space-x-4">
                       <img
-                        src={item.image}
+                        src={getProductImage(item)}
                         alt={item.name}
                         className="w-20 h-20 object-cover rounded-lg"
                       />
@@ -74,9 +75,9 @@ const Cart = () => {
                           {item.name}
                         </h3>
                         <p className="text-sm text-gray-600 dark:text-dark-text-secondary capitalize">
-                          {item.category.replace('-', ' ')}
+                          {formatCategory(item.category_slug || item.category)}
                         </p>
-                        <p className="text-lg font-semibold text-brand-red mt-1">
+                        <p className="text-lg font-semibold text-stiletto mt-1">
                           {item.price} EGP
                         </p>
                       </div>
@@ -155,7 +156,7 @@ const Cart = () => {
                 <div className="border-t border-gray-200 dark:border-dark-border pt-3">
                   <div className="flex justify-between">
                     <span className="text-lg font-semibold text-gray-900 dark:text-dark-text">Total</span>
-                    <span className="text-lg font-semibold text-brand-red">
+                    <span className="text-lg font-semibold text-stiletto">
                       {cartSummary.total + 50} EGP
                     </span>
                   </div>
@@ -165,7 +166,7 @@ const Cart = () => {
               <button
                 onClick={handleCheckout}
                 disabled={isCheckingOut}
-                className="w-full bg-brand-red text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-stiletto text-white py-3 rounded-lg font-semibold hover:bg-chestnut-rose transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isCheckingOut ? (
                   <div className="flex items-center justify-center">

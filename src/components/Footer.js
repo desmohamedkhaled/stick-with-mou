@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-black dark:bg-dark-surface text-white transition-colors duration-300">
+    <footer className="bg-william dark:bg-dark-surface text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="text-2xl font-bold mb-4">
-              <span className="text-brand-red">Stick</span>
+              <span className="text-stiletto">Stick</span>
               <span className="text-white"> With </span>
-              <span className="text-brand-gold">Mo</span>
+              <span className="text-anzac">Mo</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
               Premium laptop stickers, skins, and keyboard covers to personalize your device and express your style.
@@ -89,22 +89,22 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-brand-gold transition-colors">
+                <Link to="/" className="text-gray-300 hover:text-anzac transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/shop" className="text-gray-300 hover:text-brand-gold transition-colors">
+                <Link to="/shop" className="text-gray-300 hover:text-anzac transition-colors">
                   Shop
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-brand-gold transition-colors">
+                <Link to="/about" className="text-gray-300 hover:text-anzac transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-brand-gold transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-anzac transition-colors">
                   Contact
                 </Link>
               </li>
@@ -116,22 +116,22 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Customer Service</h3>
             <ul className="space-y-2">
               <li>
-                <button className="text-gray-300 hover:text-brand-gold transition-colors text-left">
+                <button className="text-gray-300 hover:text-anzac transition-colors text-left">
                   Shipping Info
                 </button>
               </li>
               <li>
-                <button className="text-gray-300 hover:text-brand-gold transition-colors text-left">
+                <button className="text-gray-300 hover:text-anzac transition-colors text-left">
                   Returns
                 </button>
               </li>
               <li>
-                <button className="text-gray-300 hover:text-brand-gold transition-colors text-left">
+                <button className="text-gray-300 hover:text-anzac transition-colors text-left">
                   Size Guide
                 </button>
               </li>
               <li>
-                <button className="text-gray-300 hover:text-brand-gold transition-colors text-left">
+                <button className="text-gray-300 hover:text-anzac transition-colors text-left">
                   FAQ
                 </button>
               </li>

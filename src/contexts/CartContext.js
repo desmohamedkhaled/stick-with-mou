@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { normalizeCartItem, normalizeProducts } from '../utils/dataSync';
 
 const CartContext = createContext();
 
@@ -17,7 +18,8 @@ export const CartProvider = ({ children }) => {
     // Load cart from localStorage on app load
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
+      const parsedCart = JSON.parse(storedCart);
+      setCartItems(parsedCart.map(item => normalizeCartItem(item)));
     }
   }, []);
 
@@ -30,14 +32,17 @@ export const CartProvider = ({ children }) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === product.id);
       
+      // Ensure product has all required properties
+      const normalizedProduct = normalizeCartItem(product);
+      
       if (existingItem) {
         return prevItems.map(item =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
+            ? { ...normalizedProduct, quantity: item.quantity + quantity }
             : item
         );
       } else {
-        return [...prevItems, { ...product, quantity }];
+        return [...prevItems, { ...normalizedProduct, quantity }];
       }
     });
   };

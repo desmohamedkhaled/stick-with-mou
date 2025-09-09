@@ -33,7 +33,7 @@ const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
             onClick={() => onCategoryChange(category.slug)}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
               selectedCategory === category.slug
-                ? 'bg-brand-red text-white shadow-lg'
+                ? 'bg-stiletto text-white shadow-lg'
                 : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
             }`}
             initial={{ opacity: 0, scale: 0.8 }}

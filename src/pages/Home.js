@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useProducts } from '../contexts/ProductContext';
 import ProductCard from '../components/ProductCard';
+import ProductSlider from '../components/ProductSlider';
 
 const Home = () => {
-  const { getFeaturedProducts, getTopRatedProducts } = useProducts();
+  const { getFeaturedProducts, getTopRatedProducts, products } = useProducts();
   const featuredProducts = getFeaturedProducts();
-  const topRatedProducts = getTopRatedProducts(4);
+  const topRatedProducts = getTopRatedProducts(8);
+  const allProducts = products.slice(0, 12); // Get first 12 products for the main slider
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -99,14 +101,14 @@ const Home = () => {
                 variants={heroVariants}
               >
                 <motion.span 
-                  className="text-brand-red"
+                  className="text-stiletto"
                   whileHover={{ scale: 1.1, rotate: 2 }}
                   transition={{ duration: 0.2 }}
                 >
                   Stick
                 </motion.span> With{' '}
                 <motion.span 
-                  className="text-brand-gold"
+                  className="text-anzac"
                   whileHover={{ scale: 1.1, rotate: -2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -128,7 +130,7 @@ const Home = () => {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/shop"
-                    className="bg-brand-red text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors duration-200 text-center block"
+                    className="bg-stiletto text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-chestnut-rose transition-colors duration-200 text-center block"
                   >
                     Shop Now
                   </Link>
@@ -136,7 +138,7 @@ const Home = () => {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/about"
-                    className="border-2 border-brand-gold text-brand-gold px-8 py-3 rounded-lg text-lg font-semibold hover:bg-brand-gold hover:text-black transition-colors duration-200 text-center block"
+                    className="border-2 border-anzac text-anzac px-8 py-3 rounded-lg text-lg font-semibold hover:bg-anzac hover:text-white transition-colors duration-200 text-center block"
                   >
                     Learn More
                   </Link>
@@ -167,6 +169,68 @@ const Home = () => {
             </motion.div>
           </motion.div>
         </div>
+      </section>
+
+      {/* Animated Banner Section */}
+      <section className="py-8 bg-gradient-to-r from-brand-red to-brand-gold text-white overflow-hidden">
+        <motion.div 
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="flex flex-col md:flex-row items-center justify-between text-center md:text-left"
+            animate={{
+              background: [
+                "linear-gradient(45deg, #ef4444, #fbbf24)",
+                "linear-gradient(135deg, #fbbf24, #ef4444)",
+                "linear-gradient(225deg, #ef4444, #fbbf24)",
+                "linear-gradient(315deg, #fbbf24, #ef4444)"
+              ]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          >
+            <motion.div 
+              className="mb-4 md:mb-0"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                🎉 Special Offer!
+              </h3>
+              <p className="text-lg md:text-xl opacity-90">
+                Get 30% off on all laptop skins this week
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  to="/shop"
+                  className="bg-white text-stiletto px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 inline-block"
+                >
+                  Shop Now
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  to="/contact"
+                  className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-brand-red transition-colors duration-200 inline-block"
+                >
+                  Learn More
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Features Section */}
@@ -200,7 +264,7 @@ const Home = () => {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="bg-brand-red text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="bg-stiletto text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
@@ -240,7 +304,7 @@ const Home = () => {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="bg-brand-black text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="bg-william text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
@@ -257,54 +321,21 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
-              Featured Products
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-dark-text-secondary">
-              Discover our most popular laptop accessories
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, staggerChildren: 0.1 }}
-            viewport={{ once: true }}
-          >
-            {featuredProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
-            ))}
-          </motion.div>
-          
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                to="/shop"
-                className="bg-brand-black text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors duration-200 inline-block"
-              >
-                View All Products
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Featured Products Slider */}
+      <ProductSlider 
+        products={featuredProducts} 
+        title="Featured Products" 
+        autoSlide={true}
+        slideInterval={4500}
+      />
+
+      {/* Main Product Slider */}
+      <ProductSlider 
+        products={allProducts} 
+        title="Our Best Sellers" 
+        autoSlide={true}
+        slideInterval={4000}
+      />
 
       {/* Social Media Section */}
       <section className="py-16 bg-white dark:bg-dark-bg">
@@ -408,57 +439,13 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Top Rated Products Section */}
-      <section className="py-16 bg-gray-50 dark:bg-dark-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
-              Top Rated Products
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-dark-text-secondary">
-              Our customers' favorite picks with highest ratings
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {topRatedProducts.map((product, index) => (
-              <motion.div key={product.id} variants={itemVariants}>
-                <ProductCard product={product} index={index} />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <Link to="/shop">
-              <motion.button 
-                className="bg-brand-red text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View All Products
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      {/* Top Rated Products Slider */}
+      <ProductSlider 
+        products={topRatedProducts} 
+        title="Top Rated Products" 
+        autoSlide={true}
+        slideInterval={5000}
+      />
 
       {/* Newsletter Section */}
       <section className="py-16 bg-brand-black text-white relative overflow-hidden">

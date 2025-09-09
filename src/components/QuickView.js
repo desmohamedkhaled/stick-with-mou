@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { getProductImage, formatCategory } from '../utils/dataSync';
 
 const QuickView = ({ product, isOpen, onClose }) => {
   const [quantity, setQuantity] = useState(1);
@@ -66,7 +67,7 @@ const QuickView = ({ product, isOpen, onClose }) => {
                 {/* Product Image */}
                 <div className="space-y-4">
                   <motion.img
-                    src={product.image || product.primary_image}
+                    src={getProductImage(product)}
                     alt={product.name}
                     className="w-full h-64 object-cover rounded-lg"
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -76,12 +77,12 @@ const QuickView = ({ product, isOpen, onClose }) => {
                   
                   {/* Price */}
                   <div className="flex items-center space-x-4">
-                    <span className="text-3xl font-bold text-brand-red">
-                      ${product.price}
+                    <span className="text-3xl font-bold text-stiletto">
+                      {product.price} EGP
                     </span>
                     {product.original_price && product.original_price > product.price && (
                       <span className="text-xl text-gray-500 line-through">
-                        ${product.original_price}
+                        {product.original_price} EGP
                       </span>
                     )}
                   </div>
@@ -101,14 +102,14 @@ const QuickView = ({ product, isOpen, onClose }) => {
                   {/* Category */}
                   <div>
                     <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm">
-                      {product.category_name || product.category}
+                      {formatCategory(product.category_slug || product.category)}
                     </span>
                   </div>
 
                   {/* Stock */}
                   <div>
                     <span className="text-sm text-gray-600 dark:text-dark-text-secondary">
-                      Stock: {product.stock_quantity || product.stock} available
+                      Stock: {product.stock_quantity || product.stock || 0} available
                     </span>
                   </div>
 
@@ -146,7 +147,7 @@ const QuickView = ({ product, isOpen, onClose }) => {
                   <div className="space-y-3">
                     <motion.button
                       onClick={handleAddToCart}
-                      className="w-full bg-brand-red text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+                      className="w-full bg-stiletto text-white py-3 rounded-lg font-semibold hover:bg-chestnut-rose transition-colors duration-200"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -155,7 +156,7 @@ const QuickView = ({ product, isOpen, onClose }) => {
                     
                     <motion.button
                       onClick={handleViewDetails}
-                      className="w-full border-2 border-brand-gold text-brand-gold py-3 rounded-lg font-semibold hover:bg-brand-gold hover:text-black transition-colors duration-200"
+                      className="w-full border-2 border-anzac text-anzac py-3 rounded-lg font-semibold hover:bg-anzac hover:text-white transition-colors duration-200"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >

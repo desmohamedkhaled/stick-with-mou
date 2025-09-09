@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCart } from '../contexts/CartContext';
 import { useProducts } from '../contexts/ProductContext';
+import { getProductImage, formatCategory } from '../utils/dataSync';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const ProductDetail = () => {
 
   // Mock images for the product (in real app, this would come from product data)
   const productImages = [
-    product?.image,
+    getProductImage(product),
     "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop",
     "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&h=400&fit=crop",
     "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop"
@@ -150,12 +151,12 @@ const ProductDetail = () => {
           <motion.div variants={itemVariants} className="space-y-6">
             {/* Category */}
             <motion.div
-              className="text-brand-red text-sm font-medium uppercase tracking-wide"
+              className="text-stiletto text-sm font-medium uppercase tracking-wide"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              {product.category.replace('-', ' ')}
+              {formatCategory(product.category_slug || product.category)}
             </motion.div>
 
             {/* Title */}
@@ -175,8 +176,10 @@ const ProductDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <span className="text-5xl font-bold text-brand-red">{product.price} EGP</span>
-              <span className="text-2xl text-gray-500 line-through">{(product.price * 1.5).toFixed(0)} EGP</span>
+              <span className="text-5xl font-bold text-stiletto">{product.price} EGP</span>
+              {product.original_price && product.original_price > product.price && (
+                <span className="text-2xl text-gray-500 line-through">{product.original_price} EGP</span>
+              )}
             </motion.div>
 
             {/* Rating */}
@@ -190,7 +193,7 @@ const ProductDetail = () => {
                 {[...Array(5)].map((_, i) => (
                   <motion.svg
                     key={i}
-                    className="w-6 h-6 text-yellow-400"
+                    className={`w-6 h-6 ${i < Math.floor(product.rating || 4.8) ? 'text-yellow-400' : 'text-gray-300'}`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     initial={{ opacity: 0, scale: 0 }}
@@ -201,7 +204,7 @@ const ProductDetail = () => {
                   </motion.svg>
                 ))}
               </div>
-              <span className="text-gray-600">(4.8) • 127 مراجعة</span>
+              <span className="text-gray-600">({product.rating || 4.8}) • {product.reviews_count || 127} مراجعة</span>
             </motion.div>
 
             {/* Description */}
@@ -287,7 +290,7 @@ const ProductDetail = () => {
                 className={`w-full py-4 rounded-xl font-semibold text-xl transition-all duration-200 flex items-center justify-center space-x-3 ${
                   isAdded 
                     ? 'bg-green-500 text-white' 
-                    : 'bg-brand-black text-white hover:bg-gray-800'
+                    : 'bg-william text-white hover:bg-finch'
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

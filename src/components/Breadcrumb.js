@@ -45,7 +45,7 @@ const Breadcrumb = () => {
           <li>
             <Link 
               to="/" 
-              className="text-gray-500 hover:text-brand-red transition-colors duration-200"
+              className="text-gray-500 hover:text-stiletto transition-colors duration-200"
             >
               Home
             </Link>
@@ -83,7 +83,7 @@ const Breadcrumb = () => {
                 ) : (
                   <Link 
                     to={routeTo}
-                    className="text-gray-500 hover:text-brand-red transition-colors duration-200"
+                    className="text-gray-500 hover:text-stiletto transition-colors duration-200"
                   >
                     {name}
                   </Link>

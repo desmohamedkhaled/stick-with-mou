@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      className="bg-brand-black dark:bg-dark-surface text-white shadow-lg sticky top-0 z-50 transition-colors duration-300"
+      className="bg-william dark:bg-dark-surface text-white shadow-lg sticky top-0 z-50 transition-colors duration-300"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -39,7 +39,7 @@ const Navbar = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <motion.span 
-                  className="text-brand-red"
+                  className="text-stiletto"
                   whileHover={{ scale: 1.1, rotate: 2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -47,7 +47,7 @@ const Navbar = () => {
                 </motion.span>
                 <span className="text-white"> With </span>
                 <motion.span 
-                  className="text-brand-gold"
+                  className="text-anzac"
                   whileHover={{ scale: 1.1, rotate: -2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -73,11 +73,11 @@ const Navbar = () => {
               >
                 <Link 
                   to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} 
-                  className="hover:text-brand-gold transition-colors relative group"
+                  className="hover:text-anzac transition-colors relative group"
                 >
                   {item}
                   <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300"
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-anzac group-hover:w-full transition-all duration-300"
                     whileHover={{ width: "100%" }}
                   />
                 </Link>
@@ -91,31 +91,31 @@ const Navbar = () => {
               <div className="flex items-center space-x-4">
                 <Link 
                   to="/my-account" 
-                  className="hover:text-brand-gold transition-colors"
+                  className="hover:text-anzac transition-colors"
                 >
                   My Account
                 </Link>
                 {user.role === 'admin' && (
                   <Link 
                     to="/admin" 
-                    className="hover:text-brand-gold transition-colors"
+                    className="hover:text-anzac transition-colors"
                   >
                     Admin
                   </Link>
                 )}
                 <button
                   onClick={handleLogout}
-                  className="hover:text-brand-gold transition-colors"
+                  className="hover:text-anzac transition-colors"
                 >
                   Logout
                 </button>
               </div>
             ) : (
               <div className="flex items-center space-x-4">
-                <Link to="/login" className="hover:text-brand-gold transition-colors">
+                <Link to="/login" className="hover:text-anzac transition-colors">
                   Login
                 </Link>
-                <Link to="/register" className="hover:text-brand-gold transition-colors">
+                <Link to="/register" className="hover:text-anzac transition-colors">
                   Register
                 </Link>
               </div>
@@ -163,7 +163,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Link to="/cart" className="relative hover:text-brand-gold transition-colors">
+                <Link to="/cart" className="relative hover:text-anzac transition-colors">
                   <motion.svg 
                     className="w-6 h-6" 
                     fill="none" 
@@ -177,7 +177,7 @@ const Navbar = () => {
                   <AnimatePresence>
                     {getCartItemsCount() > 0 && (
                       <motion.span 
-                        className="absolute -top-2 -right-2 bg-brand-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                        className="absolute -top-2 -right-2 bg-stiletto text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         exit={{ scale: 0, rotate: 180 }}
@@ -201,7 +201,7 @@ const Navbar = () => {
           >
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-brand-gold focus:outline-none"
+              className="text-white hover:text-anzac focus:outline-none"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -234,7 +234,7 @@ const Navbar = () => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               <motion.div 
-                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-brand-black"
+                className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-william"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -249,7 +249,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                      className="block px-3 py-2 hover:text-brand-gold transition-colors"
+                      className="block px-3 py-2 hover:text-anzac transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item}
@@ -266,7 +266,7 @@ const Navbar = () => {
                     >
                       <Link
                         to="/my-account"
-                        className="block px-3 py-2 hover:text-brand-gold transition-colors"
+                        className="block px-3 py-2 hover:text-anzac transition-colors"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         My Account
@@ -280,7 +280,7 @@ const Navbar = () => {
                       >
                         <Link
                           to="/admin"
-                          className="block px-3 py-2 hover:text-brand-gold transition-colors"
+                          className="block px-3 py-2 hover:text-anzac transition-colors"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           Admin
@@ -297,7 +297,7 @@ const Navbar = () => {
                           handleLogout();
                           setIsMenuOpen(false);
                         }}
-                        className="block w-full text-left px-3 py-2 hover:text-brand-gold transition-colors"
+                        className="block w-full text-left px-3 py-2 hover:text-anzac transition-colors"
                       >
                         Logout
                       </button>
@@ -312,7 +312,7 @@ const Navbar = () => {
                     >
                       <Link
                         to="/login"
-                        className="block px-3 py-2 hover:text-brand-gold transition-colors"
+                        className="block px-3 py-2 hover:text-anzac transition-colors"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Login
@@ -325,7 +325,7 @@ const Navbar = () => {
                     >
                       <Link
                         to="/register"
-                        className="block px-3 py-2 hover:text-brand-gold transition-colors"
+                        className="block px-3 py-2 hover:text-anzac transition-colors"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Register
@@ -340,7 +340,7 @@ const Navbar = () => {
                 >
                   <button
                     onClick={toggleTheme}
-                    className="block w-full text-left px-3 py-2 hover:text-brand-gold transition-colors"
+                    className="block w-full text-left px-3 py-2 hover:text-anzac transition-colors"
                   >
                     {isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                   </button>
@@ -352,7 +352,7 @@ const Navbar = () => {
                 >
                   <Link
                     to="/cart"
-                    className="block px-3 py-2 hover:text-brand-gold transition-colors"
+                    className="block px-3 py-2 hover:text-anzac transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Cart ({getCartItemsCount()})
