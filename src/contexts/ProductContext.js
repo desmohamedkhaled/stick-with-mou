@@ -88,14 +88,17 @@ export const ProductProvider = ({ children }) => {
     return products.filter(product => product.category_slug === category);
   };
 
-  const getTotalSales = async () => {
-    try {
-      const result = await databaseService.getTotalSales();
-      return result.totalSales || 0;
-    } catch (error) {
-      console.error('Error getting total sales:', error);
-      return 12450.99; // Fallback value
-    }
+  const getTotalSales = () => {
+    // Return a promise that resolves to the sales value
+    return new Promise(async (resolve) => {
+      try {
+        const result = await databaseService.getTotalSales();
+        resolve(result.totalSales || 0);
+      } catch (error) {
+        console.error('Error getting total sales:', error);
+        resolve(12450.99); // Fallback value
+      }
+    });
   };
 
   const getTotalStock = () => {

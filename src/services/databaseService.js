@@ -4,6 +4,7 @@
 class DatabaseService {
   constructor() {
     this.baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+    this.isServerRunning = false;
   }
 
   async request(endpoint, options = {}) {
@@ -30,6 +31,11 @@ class DatabaseService {
       return await response.json();
     } catch (error) {
       console.error('Database service error:', error);
+      // If server is not running, throw a specific error
+      if (error.message.includes('Failed to fetch') || error.message.includes('ERR_CONNECTION_REFUSED')) {
+        this.isServerRunning = false;
+        throw new Error('SERVER_NOT_RUNNING');
+      }
       throw error;
     }
   }

@@ -78,7 +78,7 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-semibold text-gray-900">Total Sales</h3>
-                <p className="text-2xl font-bold text-brand-red">EGP{getTotalSales().toFixed(2)}</p>
+                <p className="text-2xl font-bold text-brand-red">EGP{(getTotalSales() || 0).toFixed(2)}</p>
               </div>
             </div>
           </div>
