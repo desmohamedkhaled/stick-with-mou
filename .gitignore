@@ -4,7 +4,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Production build
+# Production builds
 build/
 dist/
 
@@ -15,21 +15,9 @@ dist/
 .env.test.local
 .env.production.local
 
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Database files
+database/stickwithmo.db
+database/*.db
 
 # Logs
 logs
@@ -62,24 +50,31 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
+# dotenv environment variables file
+.env
 
-# next.js build output
-.next
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# nuxt.js build output
-.nuxt
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# vuepress build output
-.vuepress/dist
+# Temporary files
+tmp/
+temp/
 
-# Serverless directories
-.serverless
+# Local development
+.local
 
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
+# Package-lock (optional - uncomment if you want to ignore it)
+# package-lock.json

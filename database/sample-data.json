@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {"id": 1, "name": "Stickers", "slug": "stickers", "description": "Decorative stickers for laptops and devices", "image_url": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=300&fit=crop", "sort_order": 1},
+    {"id": 2, "name": "Laptop Skins", "slug": "laptop-skins", "description": "Protective and decorative laptop skins", "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop", "sort_order": 2},
+    {"id": 3, "name": "Keyboard Skins", "slug": "keyboard-skins", "description": "Keyboard protectors and covers", "image_url": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop", "sort_order": 3}
+  ],
+  "users": [
+    {"id": 1, "email": "admin@stickwithmo.com", "password_hash": "$2b$10$example", "name": "Admin User", "role": "admin", "phone": "+1234567890", "address": "123 Admin St", "city": "Admin City", "state": "AC", "zip_code": "12345", "country": "USA"},
+    {"id": 2, "email": "john@example.com", "password_hash": "$2b$10$example", "name": "John Doe", "role": "user", "phone": "+1234567891", "address": "456 User Ave", "city": "User City", "state": "UC", "zip_code": "54321", "country": "USA"},
+    {"id": 3, "email": "jane@example.com", "password_hash": "$2b$10$example", "name": "Jane Smith", "role": "user", "phone": "+1234567892", "address": "789 Customer Blvd", "city": "Customer City", "state": "CC", "zip_code": "67890", "country": "USA"}
+  ],
+  "products": [
+    {"id": 1, "name": "Retro Gaming Sticker Pack", "slug": "retro-gaming-sticker-pack", "description": "A collection of retro gaming themed stickers for your laptop, featuring classic arcade games and pixel art designs.", "short_description": "Retro gaming themed stickers", "price": 650, "originalPrice": 850, "sku": "STK-001", "category_id": 1, "stock_quantity": 50, "weight": 0.1, "material": "Vinyl", "color": "Multi", "brand": "StickWithMo", "is_featured": true},
+    {"id": 2, "name": "Minimalist Black Laptop Skin", "slug": "minimalist-black-laptop-skin", "description": "Sleek black matte finish laptop skin for MacBook Pro, providing protection while maintaining a professional look.", "short_description": "Sleek black matte laptop skin", "price": 1250, "originalPrice": null, "sku": "LSK-001", "category_id": 2, "stock_quantity": 25, "weight": 0.2, "material": "3M Vinyl", "color": "Black", "brand": "StickWithMo", "is_featured": true},
+    {"id": 3, "name": "Gold Accent Keyboard Skin", "slug": "gold-accent-keyboard-skin", "description": "Premium gold accent keyboard protector with precise cutouts for all keys and touchpad.", "short_description": "Premium gold keyboard protector", "price": 950, "originalPrice": 1200, "sku": "KSK-001", "category_id": 3, "stock_quantity": 30, "weight": 0.15, "material": "Silicone", "color": "Gold", "brand": "StickWithMo", "is_featured": false},
+    {"id": 4, "name": "Nature Photography Stickers", "slug": "nature-photography-stickers", "description": "Beautiful nature photography stickers set featuring mountains, forests, and wildlife.", "short_description": "Nature photography stickers", "price": 500, "originalPrice": null, "sku": "STK-002", "category_id": 1, "stock_quantity": 40, "weight": 0.1, "material": "Vinyl", "color": "Multi", "brand": "StickWithMo", "is_featured": false},
+    {"id": 5, "name": "Carbon Fiber Laptop Skin", "slug": "carbon-fiber-laptop-skin", "description": "High-quality carbon fiber texture laptop skin with realistic 3D appearance.", "short_description": "Carbon fiber texture laptop skin", "price": 1500, "originalPrice": 1800, "sku": "LSK-002", "category_id": 2, "stock_quantity": 20, "weight": 0.2, "material": "3M Vinyl", "color": "Carbon", "brand": "StickWithMo", "is_featured": true},
+    {"id": 6, "name": "RGB Gaming Keyboard Skin", "slug": "rgb-gaming-keyboard-skin", "description": "Gaming-themed keyboard skin with RGB accents and gamer aesthetics.", "short_description": "Gaming keyboard skin with RGB", "price": 1150, "originalPrice": null, "sku": "KSK-002", "category_id": 3, "stock_quantity": 35, "weight": 0.15, "material": "Silicone", "color": "RGB", "brand": "StickWithMo", "is_featured": false}
+  ],
+  "product_images": [
+    {"product_id": 1, "image_url": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=300&fit=crop", "alt_text": "Retro Gaming Sticker Pack", "sort_order": 1, "is_primary": true},
+    {"product_id": 2, "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop", "alt_text": "Minimalist Black Laptop Skin", "sort_order": 1, "is_primary": true},
+    {"product_id": 3, "image_url": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop", "alt_text": "Gold Accent Keyboard Skin", "sort_order": 1, "is_primary": true},
+    {"product_id": 4, "image_url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop", "alt_text": "Nature Photography Stickers", "sort_order": 1, "is_primary": true},
+    {"product_id": 5, "image_url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop", "alt_text": "Carbon Fiber Laptop Skin", "sort_order": 1, "is_primary": true},
+    {"product_id": 6, "image_url": "https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=400&h=300&fit=crop", "alt_text": "RGB Gaming Keyboard Skin", "sort_order": 1, "is_primary": true}
+  ],
+  "product_reviews": [
+    {"product_id": 1, "user_id": 2, "rating": 5, "title": "Amazing quality!", "comment": "These stickers are perfect and the quality is excellent.", "is_verified_purchase": true, "is_approved": true},
+    {"product_id": 2, "user_id": 3, "rating": 4, "title": "Great fit", "comment": "Fits perfectly on my MacBook Pro. Easy to apply.", "is_verified_purchase": true, "is_approved": true},
+    {"product_id": 1, "user_id": 3, "rating": 5, "title": "Love the design", "comment": "The retro gaming theme is exactly what I was looking for.", "is_verified_purchase": true, "is_approved": true}
+  ],
+  "orders": [
+    {"id": 1, "order_number": "SWM-001", "user_id": 2, "status": "delivered", "subtotal": 1600, "tax_amount": 128, "shipping_amount": 50, "total_amount": 1778, "payment_method": "credit_card", "payment_status": "paid", "shipping_address": "456 User Ave, User City, UC 54321"},
+    {"id": 2, "order_number": "SWM-002", "user_id": 3, "status": "shipped", "subtotal": 1150, "tax_amount": 92, "shipping_amount": 50, "total_amount": 1292, "payment_method": "paypal", "payment_status": "paid", "shipping_address": "789 Customer Blvd, Customer City, CC 67890"}
+  ],
+  "order_items": [
+    {"order_id": 1, "product_id": 1, "product_name": "Retro Gaming Sticker Pack", "product_sku": "STK-001", "quantity": 1, "price": 650, "total_price": 650},
+    {"order_id": 1, "product_id": 3, "product_name": "Gold Accent Keyboard Skin", "product_sku": "KSK-001", "quantity": 1, "price": 950, "total_price": 950},
+    {"order_id": 2, "product_id": 6, "product_name": "RGB Gaming Keyboard Skin", "product_sku": "KSK-002", "quantity": 1, "price": 1150, "total_price": 1150}
+  ],
+  "coupons": [
+    {"code": "WELCOME10", "name": "Welcome Discount", "description": "10% off for new customers", "type": "percentage", "value": 10, "minimum_amount": 500, "usage_limit": 100, "is_active": true, "expires_at": "2024-12-31"},
+    {"code": "SAVE20", "name": "Save $20", "description": "$20 off orders over $100", "type": "fixed", "value": 20, "minimum_amount": 1000, "usage_limit": 50, "is_active": true, "expires_at": "2024-12-31"}
+  ],
+  "site_settings": [
+    {"setting_key": "site_name", "setting_value": "Stick with Mo", "description": "Website name"},
+    {"setting_key": "site_description", "setting_value": "Premium laptop and device accessories", "description": "Website description"},
+    {"setting_key": "currency", "setting_value": "USD", "description": "Default currency"},
+    {"setting_key": "tax_rate", "setting_value": "8", "description": "Tax rate percentage"},
+    {"setting_key": "shipping_rate", "setting_value": "50", "description": "Standard shipping rate"},
+    {"setting_key": "free_shipping_threshold", "setting_value": "2000", "description": "Minimum order for free shipping"}
+  ]
+}

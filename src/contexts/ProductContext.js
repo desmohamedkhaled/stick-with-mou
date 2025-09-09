@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import databaseService from '../services/databaseService';
 
 const ProductContext = createContext();
 
@@ -14,114 +15,100 @@ export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Load products from localStorage or initialize with sample data
-    const storedProducts = localStorage.getItem('products');
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
-    } else {
-      // Initialize with sample products
-      const sampleProducts = [
-        {
-          id: 1,
-          name: "Retro Gaming Sticker Pack",
-          price: 650,
-          originalPrice: 850,
-          category: "stickers",
-          image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=300&fit=crop",
-          description: "A collection of retro gaming themed stickers for your laptop",
-          stock: 50
-        },
-        {
-          id: 2,
-          name: "Minimalist Black Laptop Skin",
-          price: 1250,
-          category: "laptop-skins",
-          image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
-          description: "Sleek black matte finish laptop skin for MacBook Pro",
-          stock: 25
-        },
-        {
-          id: 3,
-          name: "Gold Accent Keyboard Skin",
-          price: 950,
-          originalPrice: 1200,
-          category: "keyboard-skins",
-          image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
-          description: "Premium gold accent keyboard protector",
-          stock: 30
-        },
-        {
-          id: 4,
-          name: "Nature Photography Stickers",
-          price: 500,
-          category: "stickers",
-          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-          description: "Beautiful nature photography stickers set",
-          stock: 40
-        },
-        {
-          id: 5,
-          name: "Carbon Fiber Laptop Skin",
-          price: 1500,
-          originalPrice: 1800,
-          category: "laptop-skins",
-          image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
-          description: "High-quality carbon fiber texture laptop skin",
-          stock: 20
-        },
-        {
-          id: 6,
-          name: "RGB Gaming Keyboard Skin",
-          price: 1150,
-          category: "keyboard-skins",
-          image: "https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=400&h=300&fit=crop",
-          description: "Gaming-themed keyboard skin with RGB accents",
-          stock: 35
-        }
-      ];
-      setProducts(sampleProducts);
-      localStorage.setItem('products', JSON.stringify(sampleProducts));
-    }
+    loadProducts();
   }, []);
 
-  const addProduct = (product) => {
-    const newProduct = {
-      ...product,
-      id: Date.now(),
-      stock: parseInt(product.stock) || 0
-    };
-    const updatedProducts = [...products, newProduct];
-    setProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
-    return newProduct;
+  const loadProducts = async () => {
+    try {
+      const products = await databaseService.getAllProducts();
+      setProducts(products);
+    } catch (error) {
+      console.error('Error loading products:', error);
+      // Fallback to localStorage
+      const fallbackProducts = await databaseService.getProductsFallback();
+      setProducts(fallbackProducts);
+    }
   };
 
-  const updateProduct = (id, updatedProduct) => {
-    const updatedProducts = products.map(product =>
-      product.id === id ? { ...product, ...updatedProduct } : product
-    );
-    setProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  const addProduct = async (product) => {
+    try {
+      const newProduct = await databaseService.createProduct({
+        ...product,
+        slug: product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+        stock_quantity: parseInt(product.stock) || 0,
+        category_id: getCategoryIdByName(product.category)
+      });
+      await loadProducts(); // Reload products from database
+      return newProduct;
+    } catch (error) {
+      console.error('Error adding product:', error);
+      // Fallback to localStorage
+      const newProduct = {
+        ...product,
+        id: Date.now(),
+        stock: parseInt(product.stock) || 0
+      };
+      const updatedProducts = [...products, newProduct];
+      setProducts(updatedProducts);
+      await databaseService.saveProductsFallback(updatedProducts);
+      return newProduct;
+    }
   };
 
-  const deleteProduct = (id) => {
-    const updatedProducts = products.filter(product => product.id !== id);
-    setProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  const updateProduct = async (id, updatedProduct) => {
+    try {
+      await databaseService.updateProduct(id, updatedProduct);
+      await loadProducts(); // Reload products from database
+    } catch (error) {
+      console.error('Error updating product:', error);
+      // Fallback to localStorage
+      const updatedProducts = products.map(product =>
+        product.id === id ? { ...product, ...updatedProduct } : product
+      );
+      setProducts(updatedProducts);
+      await databaseService.saveProductsFallback(updatedProducts);
+    }
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      await databaseService.deleteProduct(id);
+      await loadProducts(); // Reload products from database
+    } catch (error) {
+      console.error('Error deleting product:', error);
+      // Fallback to localStorage
+      const updatedProducts = products.filter(product => product.id !== id);
+      setProducts(updatedProducts);
+      await databaseService.saveProductsFallback(updatedProducts);
+    }
   };
 
   const getProductsByCategory = (category) => {
     if (!category || category === 'all') return products;
-    return products.filter(product => product.category === category);
+    return products.filter(product => product.category_slug === category);
   };
 
-  const getTotalSales = () => {
-    // Mock sales data - in real app this would come from orders
-    return 12450.99;
+  const getTotalSales = async () => {
+    try {
+      const result = await databaseService.getTotalSales();
+      return result.totalSales || 0;
+    } catch (error) {
+      console.error('Error getting total sales:', error);
+      return 12450.99; // Fallback value
+    }
   };
 
   const getTotalStock = () => {
-    return products.reduce((total, product) => total + product.stock, 0);
+    return products.reduce((total, product) => total + (product.stock_quantity || product.stock || 0), 0);
+  };
+
+  const getCategoryIdByName = (categoryName) => {
+    const categoryMap = {
+      'stickers': 1,
+      'laptop-skins': 2,
+      'keyboard-skins': 3
+    };
+    return categoryMap[categoryName] || 1;
   };
 
   const value = {
