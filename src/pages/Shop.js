@@ -31,7 +31,7 @@ const Shop = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div 
@@ -40,17 +40,17 @@ const Shop = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
             Shop All Products
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-dark-text-secondary">
             Discover our complete collection of laptop accessories
           </p>
         </motion.div>
 
         {/* Filters and Sorting */}
         <motion.div 
-          className="bg-white rounded-lg shadow-md p-6 mb-8"
+          className="bg-white dark:bg-dark-surface rounded-lg shadow-md p-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -58,7 +58,7 @@ const Shop = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             {/* Category Filter */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <label className="text-sm font-medium text-gray-700">Category:</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">Category:</label>
               <div className="flex flex-wrap gap-2">
                 {categories.map((category, index) => (
                   <motion.button
@@ -67,7 +67,7 @@ const Shop = () => {
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                       selectedCategory === category.value
                         ? 'bg-brand-red text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        : 'bg-gray-200 dark:bg-dark-border text-gray-700 dark:text-dark-text hover:bg-gray-300 dark:hover:bg-gray-600'
                     }`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -83,11 +83,11 @@ const Shop = () => {
 
             {/* Sort Options */}
             <div className="flex items-center gap-4">
-              <label className="text-sm font-medium text-gray-700">Sort by:</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">Sort by:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent"
+                className="border border-gray-300 dark:border-dark-border dark:bg-dark-surface dark:text-dark-text rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent"
               >
                 <option value="name">Name (A-Z)</option>
                 <option value="price-low">Price (Low to High)</option>
@@ -99,7 +99,7 @@ const Shop = () => {
 
         {/* Results Count */}
         <div className="mb-6">
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-dark-text-secondary">
             Showing {sortedProducts.length} product{sortedProducts.length !== 1 ? 's' : ''}
             {selectedCategory !== 'all' && (
               <span> in {categories.find(c => c.value === selectedCategory)?.label}</span>
@@ -141,8 +141,8 @@ const Shop = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                 </svg>
               </motion.div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No products found</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-2">No products found</h3>
+              <p className="text-gray-600 dark:text-dark-text-secondary">
                 Try adjusting your filters or browse all products.
               </p>
             </motion.div>
@@ -159,7 +159,7 @@ const Shop = () => {
             viewport={{ once: true }}
           >
             <motion.button 
-              className="bg-brand-black text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+              className="bg-brand-black dark:bg-dark-accent text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-800 dark:hover:bg-dark-accent-hover transition-colors duration-200"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

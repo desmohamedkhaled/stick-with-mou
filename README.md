@@ -1,183 +1,117 @@
-# Stick With Mo - React E-commerce Prototype
+# Stick With Mo - Laptop Stickers E-commerce
 
-A modern React e-commerce website prototype for "Stick With Mo", a brand that sells laptop stickers, laptop skins, and keyboard skins. Built with React, React Router, and Tailwind CSS.
+A modern, responsive e-commerce website for laptop stickers, skins, and keyboard covers built with React.
 
-## 🎨 Design Theme
+## Features
 
-- **Colors**: Red (#FF0000), Black (#000000), Gold (#FFD700)
-- **Typography**: Inter font family
-- **Style**: Modern, minimal UI with clean design
+- 🛍️ **Product Catalog**: Browse and filter laptop accessories
+- 🛒 **Shopping Cart**: Add/remove items with quantity management
+- 👤 **User Authentication**: Login/register system
+- 🎨 **Dark/Light Theme**: Toggle between themes
+- 📱 **Responsive Design**: Works on all devices
+- ⚡ **Fast Performance**: Built with React and Framer Motion
+- 💳 **EGP Currency**: All prices in Egyptian Pounds
 
-## ✨ Features
+## Tech Stack
 
-### 🏠 Landing Page
-- Brand logo with elegant typography
-- Hero section with call-to-action buttons
-- Featured products grid
-- Features section highlighting benefits
-- Newsletter subscription
+- **Frontend**: React 18
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Routing**: React Router
+- **State Management**: React Context API
+- **Icons**: Heroicons
 
-### 🛍️ Shop Page
-- Product grid layout with filtering
-- Category filters (Stickers, Laptop Skins, Keyboard Skins)
-- Sort options (Name, Price)
-- Product cards with images, titles, prices, and add to cart functionality
-
-### 🛒 Cart Page
-- Shopping cart with quantity controls
-- Order summary with subtotal, shipping, and tax
-- Checkout button (prototype - no real payment processing)
-- Remove items and clear cart functionality
-
-### 🔐 Authentication
-- Login and Register forms
-- Protected routes for authenticated users
-- Admin role with special privileges
-- Demo credentials provided
-
-### 👤 User Account
-- My Account page with user information
-- Order history (placeholder)
-- Account management options
-
-### ⚙️ Admin Dashboard
-- Sales and inventory statistics
-- Product management (Add, Delete)
-- Product table with all details
-- Admin-only access protection
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Node.js (version 14 or higher)
+
+- Node.js (v14 or higher)
 - npm or yarn
 
 ### Installation
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+1. Clone the repository:
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+cd YOUR_REPOSITORY_NAME
+```
 
-2. **Start the development server:**
-   ```bash
-   npm start
-   ```
+2. Install dependencies:
+```bash
+npm install
+```
 
-3. **Open your browser:**
-   Navigate to `http://localhost:3000`
+3. Start the development server:
+```bash
+npm start
+```
 
-## 🔑 Demo Credentials
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Admin Access
-- **Email**: `admin@stickwithmo.com`
-- **Password**: `admin123`
+## Available Scripts
 
-### Regular User
-- Use any email and password to create a new account
+- `npm start` - Runs the app in development mode
+- `npm build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm eject` - Ejects from Create React App (one-way operation)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
 ├── components/          # Reusable UI components
-│   ├── Navbar.js       # Navigation bar
-│   ├── Footer.js       # Footer component
-│   ├── ProductCard.js  # Product display card
-│   └── ProtectedRoute.js # Route protection
-├── contexts/           # React Context for state management
-│   ├── AuthContext.js  # Authentication state
-│   ├── CartContext.js  # Shopping cart state
-│   └── ProductContext.js # Product data management
+│   ├── Footer.js
+│   ├── Navbar.js
+│   ├── ProductCard.js
+│   └── ...
+├── contexts/           # React Context providers
+│   ├── AuthContext.js
+│   ├── CartContext.js
+│   ├── ProductContext.js
+│   └── ThemeContext.js
 ├── pages/              # Page components
-│   ├── Home.js         # Landing page
-│   ├── Shop.js         # Product listing
-│   ├── Cart.js         # Shopping cart
-│   ├── Login.js        # Login form
-│   ├── Register.js     # Registration form
-│   ├── MyAccount.js    # User account page
-│   ├── AdminDashboard.js # Admin panel
-│   ├── About.js        # About page
-│   └── Contact.js      # Contact page
-├── App.js              # Main app component with routing
-└── index.js            # App entry point
+│   ├── Home.js
+│   ├── Shop.js
+│   ├── Cart.js
+│   └── ...
+└── App.js              # Main app component
 ```
 
-## 🛠️ Technologies Used
+## Features Overview
 
-- **React 18** - Frontend framework
-- **React Router 6** - Client-side routing
-- **Tailwind CSS** - Utility-first CSS framework
-- **Context API** - State management
-- **Local Storage** - Data persistence
+### 🎨 Theme System
+- Light and dark mode support
+- Persistent theme preference
+- Smooth transitions between themes
 
-## 📱 Responsive Design
+### 🛍️ E-commerce Features
+- Product browsing and filtering
+- Shopping cart functionality
+- User authentication
+- Admin dashboard
 
-The website is fully responsive and works on:
-- Desktop computers
-- Tablets
-- Mobile phones
+### 📱 Responsive Design
+- Mobile-first approach
+- Tablet and desktop optimized
+- Touch-friendly interface
 
-## 🎯 Key Features Implemented
+## Social Media
 
-### ✅ Completed Features
-- [x] Landing page with hero section and featured products
-- [x] Shop page with product filtering and sorting
-- [x] Shopping cart with quantity controls
-- [x] User authentication (login/register)
-- [x] Protected routes
-- [x] Admin dashboard with product management
-- [x] Responsive design
-- [x] Red, black, and gold theme
-- [x] Modern UI with Tailwind CSS
+- Instagram: [@stickwith.mou](https://www.instagram.com/stickwith.mou?igsh=dXQ2N2x3MnBwOGJw)
+- TikTok: [@stickwith.mou](https://www.tiktok.com/@stickwith.mou?_t=ZS-8zZtls9UccS&_r=1)
 
-### 🔄 Prototype Features
-- Data stored in browser localStorage (no backend)
-- Mock checkout process
-- Sample product data
-- Demo authentication system
+## Contributing
 
-## 🎨 Customization
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Colors
-The brand colors are defined in `tailwind.config.js`:
-- `brand-red`: #FF0000
-- `brand-black`: #000000
-- `brand-gold`: #FFD700
+## License
 
-### Adding New Products
-Admins can add new products through the admin dashboard at `/admin`.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Modifying Styles
-All styles use Tailwind CSS classes. Custom styles can be added to `src/index.css`.
+## Contact
 
-## 🚀 Deployment
-
-To build the project for production:
-
-```bash
-npm run build
-```
-
-This creates a `build` folder with optimized production files.
-
-## 📝 Notes
-
-- This is a prototype/demo application
-- No real payment processing is implemented
-- Data is stored in browser localStorage
-- Authentication is simulated for demo purposes
-- All product images are placeholder images from Unsplash
-
-## 🤝 Contributing
-
-This is a prototype project. For production use, consider:
-- Adding a real backend API
-- Implementing proper authentication
-- Adding payment processing
-- Database integration
-- Enhanced security measures
-
-## 📄 License
-
-This project is for demonstration purposes only.
+For any questions or support, please contact us through our social media channels.

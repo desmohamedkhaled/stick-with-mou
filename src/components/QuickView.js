@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../contexts/CartContext';
 
@@ -29,6 +29,33 @@ const QuickView = ({ product, isOpen, onClose }) => {
     setQuantity(1);
     setIsAdded(false);
     onClose();
+  };
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscKey = (event) => {
+      if (event.key === 'Escape' && isOpen) {
+        handleClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscKey);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  // Handle overlay click to close
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
   };
 
   const overlayVariants = {
@@ -83,11 +110,11 @@ const QuickView = ({ product, isOpen, onClose }) => {
           initial="hidden"
           animate="visible"
           exit="exit"
+          onClick={handleOverlayClick}
         >
           {/* Backdrop */}
           <motion.div
             className="absolute inset-0 bg-black bg-opacity-50"
-            onClick={handleClose}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -100,6 +127,7 @@ const QuickView = ({ product, isOpen, onClose }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <motion.button

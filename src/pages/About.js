@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -14,7 +14,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.h1 
-              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-dark-text mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -34,7 +34,7 @@ const About = () => {
               </motion.span>
             </motion.h1>
             <motion.p 
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              className="text-xl text-gray-600 dark:text-dark-text-secondary max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -44,9 +44,9 @@ const About = () => {
           </motion.div>
 
           {/* Story Section */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-            <div className="prose prose-lg text-gray-600">
+          <div className="bg-white dark:bg-dark-surface rounded-lg shadow-md p-8 mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-dark-text mb-6">Our Story</h2>
+            <div className="prose prose-lg text-gray-600 dark:text-dark-text-secondary">
               <p className="mb-4">
                 Founded in 2024, Stick With Mo began with a simple mission: to provide high-quality, 
                 stylish laptop accessories that allow people to express their personality through their devices.
@@ -85,8 +85,8 @@ const About = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">Quality First</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-dark-text">Quality First</h3>
+              <p className="text-gray-600 dark:text-dark-text-secondary">
                 We use only premium materials and rigorous quality control to ensure every product meets our high standards.
               </p>
             </motion.div>
@@ -105,8 +105,8 @@ const About = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">Customer Love</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-dark-text">Customer Love</h3>
+              <p className="text-gray-600 dark:text-dark-text-secondary">
                 Your satisfaction is our priority. We're committed to providing exceptional customer service and support.
               </p>
             </motion.div>
@@ -125,46 +125,46 @@ const About = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">Innovation</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-dark-text">Innovation</h3>
+              <p className="text-gray-600 dark:text-dark-text-secondary">
                 We continuously innovate to bring you the latest designs and cutting-edge materials.
               </p>
             </motion.div>
           </motion.div>
 
           {/* Team Section */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Meet Our Team</h2>
+          <div className="bg-white dark:bg-dark-surface rounded-lg shadow-md p-8 mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-dark-text mb-6">Meet Our Team</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-500">MO</span>
+                <div className="w-32 h-32 bg-gray-200 dark:bg-dark-border rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-gray-500 dark:text-dark-text">MO</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Mo Johnson</h3>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-dark-text">Mo Johnson</h3>
                 <p className="text-brand-red font-medium mb-2">Founder & CEO</p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                   Passionate about design and technology, Mo started Stick With Mo to help people express their creativity.
                 </p>
               </div>
               
               <div className="text-center">
-                <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-500">AS</span>
+                <div className="w-32 h-32 bg-gray-200 dark:bg-dark-border rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-gray-500 dark:text-dark-text">AS</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Alex Smith</h3>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-dark-text">Alex Smith</h3>
                 <p className="text-brand-red font-medium mb-2">Head of Design</p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                   Creative visionary responsible for our unique product designs and brand aesthetic.
                 </p>
               </div>
               
               <div className="text-center">
-                <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-500">SJ</span>
+                <div className="w-32 h-32 bg-gray-200 dark:bg-dark-border rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-gray-500 dark:text-dark-text">SJ</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Sarah Johnson</h3>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-dark-text">Sarah Johnson</h3>
                 <p className="text-brand-red font-medium mb-2">Customer Success</p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 dark:text-dark-text-secondary text-sm">
                   Dedicated to ensuring every customer has an amazing experience with our products.
                 </p>
               </div>
@@ -172,7 +172,7 @@ const About = () => {
           </div>
 
           {/* Contact CTA */}
-          <div className="bg-gradient-to-r from-brand-black to-gray-800 text-white rounded-lg p-8 text-center">
+          <div className="bg-gradient-to-r from-brand-black to-gray-800 dark:from-dark-surface dark:to-gray-700 text-white rounded-lg p-8 text-center">
             <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
             <p className="text-xl text-gray-300 mb-6">
               Have questions or want to collaborate? We'd love to hear from you!

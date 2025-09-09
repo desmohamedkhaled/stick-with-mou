@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
-import QuickView from './QuickView';
 
 const ProductCard = ({ product, index = 0 }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const [showQuickView, setShowQuickView] = useState(false);
 
   const handleAddToCart = () => {
     addToCart(product);
@@ -77,7 +77,7 @@ const ProductCard = ({ product, index = 0 }) => {
 
   return (
     <motion.div 
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100"
+      className="bg-white dark:bg-dark-surface rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-dark-border group"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
@@ -94,13 +94,27 @@ const ProductCard = ({ product, index = 0 }) => {
           whileHover="hover"
         />
         <motion.div 
-          className="absolute top-3 right-3 bg-brand-red text-white px-2 py-1 rounded-full text-xs font-semibold"
+          className="absolute top-3 right-3 bg-brand-red text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 + index * 0.1 }}
         >
           New
         </motion.div>
+        
+        {/* Wishlist Button */}
+        <motion.button
+          className="absolute top-3 left-3 bg-white dark:bg-dark-surface text-gray-600 dark:text-dark-text p-2 rounded-full shadow-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-200"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.6 + index * 0.1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </motion.button>
         
         {/* Overlay on hover */}
         <motion.div 
@@ -110,19 +124,22 @@ const ProductCard = ({ product, index = 0 }) => {
           transition={{ duration: 0.2 }}
         >
           <motion.button
-            onClick={() => setShowQuickView(true)}
-            className="bg-white text-brand-black px-4 py-2 rounded-lg font-semibold shadow-lg"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/product/${product.id}`);
+            }}
+            className="bg-white dark:bg-dark-surface text-brand-black dark:text-dark-text px-4 py-2 rounded-lg font-semibold shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Quick View
+            View Product
           </motion.button>
         </motion.div>
       </div>
       
       <div className="p-5">
         <motion.h3 
-          className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2"
+          className="text-lg font-semibold text-gray-900 dark:text-dark-text mb-2 line-clamp-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 + index * 0.1 }}
@@ -131,7 +148,7 @@ const ProductCard = ({ product, index = 0 }) => {
         </motion.h3>
         
         <motion.p 
-          className="text-gray-600 text-sm mb-4 line-clamp-2"
+          className="text-gray-600 dark:text-dark-text-secondary text-sm mb-4 line-clamp-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 + index * 0.1 }}
@@ -139,22 +156,29 @@ const ProductCard = ({ product, index = 0 }) => {
           {product.description}
         </motion.p>
         
-        <div className="flex items-center justify-between mb-3">
-          <motion.span 
-            className="text-2xl font-bold text-brand-red"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 + index * 0.1 }}
-          >
-            {product.price} EGP
-          </motion.span>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col">
+            <motion.span 
+              className="text-2xl font-bold text-brand-red"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 + index * 0.1 }}
+            >
+              {product.price} EGP
+            </motion.span>
+            {product.originalPrice && (
+              <span className="text-sm text-gray-500 dark:text-dark-text-secondary line-through">
+                {product.originalPrice} EGP
+              </span>
+            )}
+          </div>
           
           <motion.button
             onClick={handleAddToCart}
             className={`px-4 py-2 rounded-lg font-semibold flex items-center space-x-2 transition-all duration-200 ${
               isAdded 
                 ? 'bg-green-500 text-white' 
-                : 'bg-brand-black text-white hover:bg-gray-800'
+                : 'bg-brand-black dark:bg-dark-accent text-white hover:bg-gray-800 dark:hover:bg-dark-accent-hover'
             }`}
             variants={isAdded ? successVariants : buttonVariants}
             whileHover="hover"
@@ -185,7 +209,7 @@ const ProductCard = ({ product, index = 0 }) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 + index * 0.1 }}
         >
-          <span className="text-xs text-gray-500 capitalize">
+          <span className="text-xs text-gray-500 dark:text-dark-text-secondary capitalize">
             {product.category.replace('-', ' ')}
           </span>
           <div className="flex items-center space-x-1">
@@ -205,13 +229,6 @@ const ProductCard = ({ product, index = 0 }) => {
           </div>
         </motion.div>
       </div>
-
-      {/* Quick View Modal */}
-      <QuickView 
-        product={product}
-        isOpen={showQuickView}
-        onClose={() => setShowQuickView(false)}
-      />
     </motion.div>
   );
 };

@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth();
   const { getCartItemsCount } = useCart();
+  const { isDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -17,7 +19,7 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      className="bg-brand-black text-white shadow-lg sticky top-0 z-50"
+      className="bg-brand-black dark:bg-dark-surface text-white shadow-lg sticky top-0 z-50 transition-colors duration-300"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -118,6 +120,38 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
+            
+            {/* Theme Toggle */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.7 }}
+            >
+              <motion.button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors duration-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              >
+                <motion.svg 
+                  className="w-5 h-5 text-white" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                  animate={{ rotate: isDark ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {isDark ? (
+                    // Sun icon for light mode
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  ) : (
+                    // Moon icon for dark mode
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  )}
+                </motion.svg>
+              </motion.button>
+            </motion.div>
             
             {/* Cart */}
             <motion.div
@@ -303,6 +337,18 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.9 }}
+                >
+                  <button
+                    onClick={toggleTheme}
+                    className="block w-full text-left px-3 py-2 hover:text-brand-gold transition-colors"
+                  >
+                    {isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                  </button>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 1.0 }}
                 >
                   <Link
                     to="/cart"

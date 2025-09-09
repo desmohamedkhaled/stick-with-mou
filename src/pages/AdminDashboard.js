@@ -206,16 +206,50 @@ const AdminDashboard = () => {
 
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Image URL
+                    صورة المنتج
                   </label>
-                  <input
-                    type="url"
-                    name="image"
-                    value={newProduct.image}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent"
-                    placeholder="https://example.com/image.jpg"
-                  />
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        رفع صورة من الجهاز:
+                      </label>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent"
+                      />
+                    </div>
+                    
+                    <div className="text-center text-gray-500">أو</div>
+{/*                     
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        أدخل رابط الصورة:
+                      </label>
+                      <input
+                        type="url"
+                        name="image"
+                        value={newProduct.image}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent"
+                        placeholder="https://example.com/image.jpg"
+                      />
+                    </div>
+                     */}
+                    {imagePreview && (
+                      <div className="mt-4">
+                        <div className="text-sm font-medium text-gray-700 mb-2">معاينة الصورة:</div>
+                        <div className="flex justify-center">
+                          <img
+                            src={imagePreview}
+                            alt="معاينة الصورة"
+                            className="w-48 h-48 object-cover rounded-lg border-2 border-gray-300 shadow-md"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="md:col-span-2">
