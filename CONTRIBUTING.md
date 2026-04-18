@@ -9,6 +9,7 @@ Thank you for your interest in contributing to Stick with Mo! This document prov
 - npm or yarn
 - Git
 
+
 ### Setup
 1. Fork the repository
 2. Clone your fork:
