@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { normalizeCartItem, normalizeProducts } from '../utils/dataSync';
+import { normalizeCartItem } from '../utils/dataSync';
 
 const CartContext = createContext();
 

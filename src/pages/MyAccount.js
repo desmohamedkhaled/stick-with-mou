@@ -5,7 +5,6 @@ import { useCart } from '../contexts/CartContext';
 
 const MyAccount = () => {
   const { user, logout } = useAuth();
-  const { cartItems } = useCart();
   const [activeTab, setActiveTab] = useState('profile');
 
   const tabs = [

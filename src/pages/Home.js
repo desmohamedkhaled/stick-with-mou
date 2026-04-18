@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useProducts } from '../contexts/ProductContext';
-import ProductCard from '../components/ProductCard';
 import ProductSlider from '../components/ProductSlider';
 
 const Home = () => {

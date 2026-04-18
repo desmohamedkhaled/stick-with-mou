@@ -303,7 +303,7 @@ const AdminDashboard = () => {
                         <div className="flex justify-center">
                           <img
                             src={imagePreview}
-                            alt="Image Preview"
+                              alt="Uploaded product preview"
                             className="w-48 h-48 object-cover rounded-lg border-2 border-gray-300 shadow-md"
                           />
                         </div>

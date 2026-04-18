@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../contexts/CartContext';
 import ProductCard from './ProductCard';
 
 const ProductSlider = ({ products, title = "Featured Products", autoSlide = true, slideInterval = 5000 }) => {
@@ -9,7 +8,6 @@ const ProductSlider = ({ products, title = "Featured Products", autoSlide = true
   const [isHovered, setIsHovered] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(autoSlide);
   const intervalRef = useRef(null);
-  const { addToCart } = useCart();
   const navigate = useNavigate();
 
   // Calculate how many products to show per slide based on screen size
