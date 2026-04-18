@@ -66,17 +66,17 @@ git push
 git pull origin main
 ```
 
-## 🚀 Deploy to Vercel
+## 🚀 Deploy to Netlify
 
 ### After pushing to GitHub:
-1. **Go to**: [vercel.com](https://vercel.com)
+1. **Go to**: [netlify.com](https://netlify.com)
 2. **Sign in** with GitHub
-3. **Click "New Project"**
+3. **Click "New site from Git"**
 4. **Import** your `stick-with-mo` repository
-5. **Click "Deploy"**
+5. **Click "Deploy site"**
 
 ### Your site will be live at:
-`https://stick-with-mo.vercel.app` (or similar URL)
+`https://stick-with-mo.netlify.app` (or similar URL)
 
 ## 🔧 Troubleshooting
 
@@ -90,8 +90,8 @@ git pull origin main
 2. **Make sure repository exists** on GitHub
 3. **Check your internet connection**
 
-### If Vercel deployment fails:
-1. **Check build logs** in Vercel dashboard
+### If Netlify deployment fails:
+1. **Check build logs** in Netlify dashboard
 2. **Make sure** `npm run build` works locally
 3. **Check** that all files are committed to GitHub
 
@@ -99,7 +99,7 @@ git pull origin main
 
 - **Git Documentation**: [git-scm.com/doc](https://git-scm.com/doc)
 - **GitHub Help**: [help.github.com](https://help.github.com)
-- **Vercel Docs**: [vercel.com/docs](https://vercel.com/docs)
+- **Netlify Docs**: [docs.netlify.com](https://docs.netlify.com)
 
 ---
 

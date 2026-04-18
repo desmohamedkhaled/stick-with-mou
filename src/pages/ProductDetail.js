@@ -94,7 +94,7 @@ const ProductDetail = () => {
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          العودة للمتجر
+          Back to Shop
         </motion.button>
 
         <motion.div
@@ -204,7 +204,7 @@ const ProductDetail = () => {
                   </motion.svg>
                 ))}
               </div>
-              <span className="text-gray-600">({product.rating || 4.8}) • {product.reviews_count || 127} مراجعة</span>
+              <span className="text-gray-600">({product.rating || 4.8}) • {product.reviews_count || 127} reviews</span>
             </motion.div>
 
             {/* Description */}
@@ -224,14 +224,14 @@ const ProductDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <h3 className="text-xl font-semibold text-gray-900">المميزات:</h3>
+              <h3 className="text-xl font-semibold text-gray-900">Features:</h3>
               <ul className="space-y-2">
-                {[
-                  "مواد عالية الجودة",
-                  "سهولة التركيب",
-                  "تركيب بدون فقاعات",
-                  "متانة وطول عمر",
-                  "سهولة الإزالة بدون بقايا"
+                {                [
+                  "High-quality materials",
+                  "Easy installation",
+                  "Bubble-free application",
+                  "Durability and long-lasting",
+                  "Easy removal without residue"
                 ].map((feature, index) => (
                   <motion.li
                     key={index}
@@ -258,7 +258,7 @@ const ProductDetail = () => {
             >
               {/* Quantity Selector */}
               <div className="flex items-center space-x-4">
-                <span className="text-lg font-medium text-gray-700">الكمية:</span>
+                <span className="text-lg font-medium text-gray-700">Quantity:</span>
                 <div className="flex items-center border border-gray-300 rounded-lg">
                   <motion.button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -311,7 +311,7 @@ const ProductDetail = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
                   )}
                 </motion.svg>
-                <span>{isAdded ? 'تم الإضافة للسلة!' : `أضف ${quantity} للسلة`}</span>
+                <span>{isAdded ? 'Added to Cart!' : `Add ${quantity} to Cart`}</span>
               </motion.button>
 
               {/* Additional Actions */}
@@ -321,14 +321,14 @@ const ProductDetail = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  أضف للمفضلة
+                  Add to Wishlist
                 </motion.button>
                 <motion.button
                   className="py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  مشاركة
+                  Share
                 </motion.button>
               </div>
             </motion.div>

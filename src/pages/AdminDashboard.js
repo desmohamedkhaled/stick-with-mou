@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useProducts } from '../contexts/ProductContext';
+import { useAuth } from '../contexts/AuthContext';
 
 const AdminDashboard = () => {
+  const { user } = useAuth();
   const { products, addProduct, deleteProduct, getTotalSales, getTotalStock, loading } = useProducts();
   const [totalSales, setTotalSales] = useState(0);
   const [showAddForm, setShowAddForm] = useState(false);
@@ -73,8 +75,23 @@ const AdminDashboard = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-brand-red mx-auto"></div>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-stiletto mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Check if user is admin
+  if (!user || user.role !== 'admin') {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Access Denied</h1>
+          <p className="text-gray-600 mb-4">You need admin privileges to access this page.</p>
+          <a href="/login" className="bg-stiletto text-white px-6 py-2 rounded-lg hover:bg-chestnut-rose transition-colors">
+            Go to Login
+          </a>
         </div>
       </div>
     );
@@ -89,8 +106,10 @@ const AdminDashboard = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-dark-text">لوحة تحكم الإدارة</h1>
-          <p className="text-gray-600 dark:text-dark-text-secondary mt-2">إدارة منتجاتك وعرض إحصائيات المتجر</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-dark-text">Admin Dashboard</h1>
+          <p className="text-gray-600 dark:text-dark-text-secondary mt-2">
+            Welcome, {user?.name || 'Admin'}! Manage your products and view store statistics
+          </p>
         </motion.div>
 
         {/* Stats Cards */}
@@ -118,8 +137,8 @@ const AdminDashboard = () => {
                 </svg>
               </motion.div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">إجمالي المبيعات</h3>
-                <p className="text-2xl font-bold text-brand-red">{totalSales.toFixed(2)} جنيه</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Total Sales</h3>
+                <p className="text-2xl font-bold text-brand-red">{totalSales.toFixed(2)} EGP</p>
               </div>
             </div>
           </motion.div>
@@ -142,7 +161,7 @@ const AdminDashboard = () => {
                 </svg>
               </motion.div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">إجمالي المخزون</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Total Stock</h3>
                 <p className="text-2xl font-bold text-anzac">{getTotalStock()}</p>
               </div>
             </div>
@@ -166,7 +185,7 @@ const AdminDashboard = () => {
                 </svg>
               </motion.div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">إجمالي المنتجات</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Total Products</h3>
                 <p className="text-2xl font-bold text-brand-black">{products.length}</p>
               </div>
             </div>

@@ -11,10 +11,10 @@ const Shop = () => {
   const [priceRange, setPriceRange] = useState({ min: 0, max: 5000 });
 
   const categories = [
-    { value: 'all', label: 'جميع المنتجات' },
-    { value: 'stickers', label: 'الملصقات' },
-    { value: 'laptop-skins', label: 'أغلفة اللابتوب' },
-    { value: 'keyboard-skins', label: 'أغلفة لوحة المفاتيح' }
+    { value: 'all', label: 'All Products' },
+    { value: 'stickers', label: 'Stickers' },
+    { value: 'laptop-skins', label: 'Laptop Skins' },
+    { value: 'keyboard-skins', label: 'Keyboard Skins' }
   ];
 
   // Get products based on search or category
@@ -51,10 +51,10 @@ const Shop = () => {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
-            متجر المنتجات
+            Product Store
           </h1>
           <p className="text-lg text-gray-600 dark:text-dark-text-secondary">
-            اكتشف مجموعتنا الكاملة من إكسسوارات اللابتوب
+            Discover our complete collection of laptop accessories
           </p>
         </motion.div>
 
@@ -68,7 +68,7 @@ const Shop = () => {
           <div className="relative max-w-md mx-auto">
             <motion.input
               type="text"
-              placeholder="ابحث عن المنتجات..."
+              placeholder="Search for products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-4 py-3 pl-12 pr-4 border border-gray-300 dark:border-dark-border dark:bg-dark-surface dark:text-dark-text rounded-lg focus:outline-none focus:ring-2 focus:ring-stiletto focus:border-transparent"
@@ -107,7 +107,7 @@ const Shop = () => {
           <div className="space-y-6">
             {/* Category Filter */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">التصنيف:</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">Category:</label>
               <div className="flex flex-wrap gap-2">
                 {categories.map((category, index) => (
                   <motion.button
@@ -132,11 +132,11 @@ const Shop = () => {
 
             {/* Price Range Filter */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">نطاق السعر:</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">Price Range:</label>
               <div className="flex items-center gap-4">
                 <input
                   type="number"
-                  placeholder="من"
+                  placeholder="From"
                   value={priceRange.min}
                   onChange={(e) => setPriceRange({...priceRange, min: parseInt(e.target.value) || 0})}
                   className="w-24 px-3 py-2 border border-gray-300 dark:border-dark-border dark:bg-dark-surface dark:text-dark-text rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-stiletto focus:border-transparent"
@@ -144,26 +144,26 @@ const Shop = () => {
                 <span className="text-gray-500">-</span>
                 <input
                   type="number"
-                  placeholder="إلى"
+                  placeholder="To"
                   value={priceRange.max}
                   onChange={(e) => setPriceRange({...priceRange, max: parseInt(e.target.value) || 5000})}
                   className="w-24 px-3 py-2 border border-gray-300 dark:border-dark-border dark:bg-dark-surface dark:text-dark-text rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-stiletto focus:border-transparent"
                 />
-                <span className="text-sm text-gray-500">جنيه</span>
+                <span className="text-sm text-gray-500">EGP</span>
               </div>
             </div>
 
             {/* Sort Options */}
             <div className="flex items-center gap-4">
-              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">ترتيب حسب:</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-dark-text">Sort by:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="border border-gray-300 dark:border-dark-border dark:bg-dark-surface dark:text-dark-text rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-stiletto focus:border-transparent"
               >
-                <option value="name">الاسم (أ-ي)</option>
-                <option value="price-low">السعر (من الأقل للأعلى)</option>
-                <option value="price-high">السعر (من الأعلى للأقل)</option>
+                <option value="name">Name (A-Z)</option>
+                <option value="price-low">Price (Low to High)</option>
+                <option value="price-high">Price (High to Low)</option>
               </select>
             </div>
           </div>
@@ -177,12 +177,12 @@ const Shop = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <p className="text-gray-600 dark:text-dark-text-secondary">
-            عرض {sortedProducts.length} منتج
+            Showing {sortedProducts.length} products
             {selectedCategory !== 'all' && (
-              <span> في {categories.find(c => c.value === selectedCategory)?.label}</span>
+              <span> in {categories.find(c => c.value === selectedCategory)?.label}</span>
             )}
             {searchQuery && (
-              <span> للبحث عن "{searchQuery}"</span>
+              <span> for "{searchQuery}"</span>
             )}
           </p>
         </motion.div>
@@ -221,9 +221,9 @@ const Shop = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                 </svg>
               </motion.div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-2">لم يتم العثور على منتجات</h3>
+              <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-2">No products found</h3>
               <p className="text-gray-600 dark:text-dark-text-secondary">
-                جرب تعديل المرشحات أو تصفح جميع المنتجات.
+                Try adjusting your filters or browse all products.
               </p>
             </motion.div>
           )}
@@ -243,7 +243,7 @@ const Shop = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              تحميل المزيد من المنتجات
+              Load More Products
             </motion.button>
           </motion.div>
         )}

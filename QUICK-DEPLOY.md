@@ -1,6 +1,6 @@
 # ⚡ Quick Deploy Guide
 
-## 🚀 Deploy to Vercel in 3 Steps
+## 🚀 Deploy to Netlify in 3 Steps
 
 ### Step 1: Push to GitHub
 ```bash
@@ -11,7 +11,7 @@ git init
 git add .
 
 # Commit changes
-git commit -m "Deploy to Vercel - Frontend only e-commerce"
+git commit -m "Deploy to Netlify - Frontend only e-commerce"
 
 # Add remote (replace with your GitHub repo URL)
 git remote add origin https://github.com/YOUR_USERNAME/stick-with-mo.git
@@ -20,17 +20,17 @@ git remote add origin https://github.com/YOUR_USERNAME/stick-with-mo.git
 git push -u origin main
 ```
 
-### Step 2: Connect to Vercel
-1. Go to [vercel.com](https://vercel.com)
+### Step 2: Connect to Netlify
+1. Go to [netlify.com](https://netlify.com)
 2. Sign in with GitHub
-3. Click "New Project"
+3. Click "New site from Git"
 4. Import your repository
-5. Click "Deploy"
+5. Click "Deploy site"
 
 ### Step 3: Your Site is Live! 🎉
-- **URL**: `https://your-project-name.vercel.app`
+- **URL**: `https://your-project-name.netlify.app`
 - **Auto-deploy**: Every push to GitHub will update the site
-- **No configuration needed**: Vercel detects React automatically
+- **No configuration needed**: Netlify detects React automatically
 
 ## ✅ What's Included
 

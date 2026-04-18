@@ -9,24 +9,32 @@ const MyAccount = () => {
   const [activeTab, setActiveTab] = useState('profile');
 
   const tabs = [
-    { id: 'profile', label: 'الملف الشخصي', icon: '👤' },
-    { id: 'orders', label: 'الطلبات', icon: '📦' },
-    { id: 'wishlist', label: 'المفضلة', icon: '❤️' },
-    { id: 'settings', label: 'الإعدادات', icon: '⚙️' }
+    { id: 'profile', label: 'Profile', icon: '👤' },
+    { id: 'orders', label: 'Orders', icon: '📦' },
+    { id: 'wishlist', label: 'Wishlist', icon: '❤️' },
+    { id: 'settings', label: 'Settings', icon: '⚙️' },
+    ...(user?.role === 'admin' ? [{ id: 'admin', label: 'Admin Panel', icon: '🛠️' }] : [])
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-4xl mx-auto">
-          <motion.h1 
-            className="text-3xl font-bold text-gray-900 dark:text-dark-text mb-8"
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            حسابي الشخصي
-          </motion.h1>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-dark-text mb-2">
+              My Account
+              {user?.role === 'admin' && <span className="ml-3 text-stiletto">👑</span>}
+            </h1>
+            {user?.role === 'admin' && (
+              <p className="text-stiletto font-medium mb-6">
+                Welcome, Admin! You have full access to manage the store.
+              </p>
+            )}
+          </motion.div>
 
           {/* Tab Navigation */}
           <motion.div 
@@ -66,7 +74,7 @@ const MyAccount = () => {
             {activeTab === 'profile' && (
               <div>
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">معلومات الحساب</h2>
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Account Information</h2>
                 </div>
                 
                 <div className="p-6">
@@ -77,10 +85,10 @@ const MyAccount = () => {
                       transition={{ delay: 0.1 }}
                     >
                       <label className="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">
-                        الاسم الكامل
+                        Full Name
                       </label>
                       <div className="bg-gray-50 dark:bg-dark-border px-3 py-2 rounded-md text-gray-900 dark:text-dark-text">
-                        {user?.name || 'غير محدد'}
+                        {user?.name || 'Not specified'}
                       </div>
                     </motion.div>
                     
@@ -90,10 +98,10 @@ const MyAccount = () => {
                       transition={{ delay: 0.2 }}
                     >
                       <label className="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">
-                        البريد الإلكتروني
+                        Email Address
                       </label>
                       <div className="bg-gray-50 dark:bg-dark-border px-3 py-2 rounded-md text-gray-900 dark:text-dark-text">
-                        {user?.email || 'غير محدد'}
+                        {user?.email || 'Not specified'}
                       </div>
                     </motion.div>
                     
@@ -103,10 +111,15 @@ const MyAccount = () => {
                       transition={{ delay: 0.3 }}
                     >
                       <label className="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">
-                        نوع الحساب
+                        Account Type
                       </label>
-                      <div className="bg-gray-50 dark:bg-dark-border px-3 py-2 rounded-md text-gray-900 dark:text-dark-text capitalize">
-                        {user?.role === 'admin' ? 'مدير' : 'عميل'}
+                      <div className={`px-3 py-2 rounded-md text-gray-900 dark:text-dark-text capitalize flex items-center space-x-2 ${
+                        user?.role === 'admin' 
+                          ? 'bg-stiletto text-white' 
+                          : 'bg-gray-50 dark:bg-dark-border'
+                      }`}>
+                        <span>{user?.role === 'admin' ? 'Admin' : 'Customer'}</span>
+                        {user?.role === 'admin' && <span className="text-xs">👑</span>}
                       </div>
                     </motion.div>
                     
@@ -116,10 +129,10 @@ const MyAccount = () => {
                       transition={{ delay: 0.4 }}
                     >
                       <label className="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">
-                        عضو منذ
+                        Member Since
                       </label>
                       <div className="bg-gray-50 dark:bg-dark-border px-3 py-2 rounded-md text-gray-900 dark:text-dark-text">
-                        {new Date().toLocaleDateString('ar-EG')}
+                        {new Date().toLocaleDateString('en-US')}
                       </div>
                     </motion.div>
                   </div>
@@ -130,7 +143,7 @@ const MyAccount = () => {
             {activeTab === 'orders' && (
               <div>
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">تاريخ الطلبات</h2>
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Order History</h2>
                 </div>
                 
                 <div className="p-6">
@@ -151,7 +164,7 @@ const MyAccount = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      لا توجد طلبات بعد
+                      No orders yet
                     </motion.h3>
                     <motion.p 
                       className="text-gray-600 dark:text-dark-text-secondary mb-4"
@@ -159,7 +172,7 @@ const MyAccount = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
                     >
-                      لم تقم بطلب أي منتجات بعد. ابدأ التسوق لترى تاريخ طلباتك هنا.
+                      You haven't placed any orders yet. Start shopping to see your order history here.
                     </motion.p>
                     <motion.a
                       href="/shop"
@@ -170,7 +183,7 @@ const MyAccount = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      ابدأ التسوق
+                      Start Shopping
                     </motion.a>
                   </div>
                 </div>
@@ -180,7 +193,7 @@ const MyAccount = () => {
             {activeTab === 'wishlist' && (
               <div>
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">قائمة المفضلة</h2>
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Wishlist</h2>
                 </div>
                 
                 <div className="p-6">
@@ -201,7 +214,7 @@ const MyAccount = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      قائمة المفضلة فارغة
+                      Wishlist is empty
                     </motion.h3>
                     <motion.p 
                       className="text-gray-600 dark:text-dark-text-secondary mb-4"
@@ -209,7 +222,7 @@ const MyAccount = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
                     >
-                      لم تقم بإضافة أي منتجات للمفضلة بعد. ابدأ بإضافة المنتجات التي تعجبك!
+                      You haven't added any products to your wishlist yet. Start adding products you like!
                     </motion.p>
                     <motion.a
                       href="/shop"
@@ -220,7 +233,7 @@ const MyAccount = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      تصفح المنتجات
+                      Browse Products
                     </motion.a>
                   </div>
                 </div>
@@ -230,7 +243,7 @@ const MyAccount = () => {
             {activeTab === 'settings' && (
               <div>
                 <div className="px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">إعدادات الحساب</h2>
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Account Settings</h2>
                 </div>
                 
                 <div className="p-6">
@@ -243,8 +256,8 @@ const MyAccount = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="font-medium">تغيير كلمة المرور</div>
-                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">تحديث كلمة مرور حسابك</div>
+                      <div className="font-medium">Change Password</div>
+                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">Update your account password</div>
                     </motion.button>
                     
                     <motion.button 
@@ -255,8 +268,8 @@ const MyAccount = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="font-medium">تعديل الملف الشخصي</div>
-                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">تحديث معلوماتك الشخصية</div>
+                      <div className="font-medium">Edit Profile</div>
+                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">Update your personal information</div>
                     </motion.button>
                     
                     <motion.button 
@@ -267,8 +280,8 @@ const MyAccount = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="font-medium">دفتر العناوين</div>
-                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">إدارة عناوين الشحن الخاصة بك</div>
+                      <div className="font-medium">Address Book</div>
+                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">Manage your shipping addresses</div>
                     </motion.button>
                     
                     <motion.button 
@@ -279,8 +292,8 @@ const MyAccount = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="font-medium">النشرة الإخبارية</div>
-                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">إدارة تفضيلات البريد الإلكتروني</div>
+                      <div className="font-medium">Newsletter</div>
+                      <div className="text-sm text-gray-500 dark:text-dark-text-secondary">Manage your email preferences</div>
                     </motion.button>
                   </div>
 
@@ -296,8 +309,64 @@ const MyAccount = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      تسجيل الخروج
+                      Logout
                     </motion.button>
+                  </motion.div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'admin' && user?.role === 'admin' && (
+              <div>
+                <div className="px-6 py-4 border-b border-gray-200 dark:border-dark-border">
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Admin Panel</h2>
+                </div>
+                
+                <div className="p-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <motion.a
+                      href="/admin"
+                      className="bg-stiletto text-white px-6 py-4 rounded-lg hover:bg-chestnut-rose transition-colors duration-200 text-center block"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="text-2xl mb-2">🛠️</div>
+                      <div className="font-semibold text-lg">Admin Dashboard</div>
+                      <div className="text-sm opacity-90">Manage products, view statistics, and control the store</div>
+                    </motion.a>
+                    
+                    <motion.div
+                      className="bg-anzac text-white px-6 py-4 rounded-lg text-center"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <div className="text-2xl mb-2">📊</div>
+                      <div className="font-semibold text-lg">Quick Stats</div>
+                      <div className="text-sm opacity-90 mt-2">
+                        <div>Total Products: {cartItems.length > 0 ? 'Loading...' : '10+'}</div>
+                        <div>Admin Access: Active</div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  <motion.div 
+                    className="mt-6 p-4 bg-gray-50 dark:bg-dark-border rounded-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <h3 className="font-semibold text-gray-900 dark:text-dark-text mb-2">Admin Features:</h3>
+                    <ul className="text-sm text-gray-600 dark:text-dark-text-secondary space-y-1">
+                      <li>• Add, edit, and delete products</li>
+                      <li>• View sales statistics and inventory</li>
+                      <li>• Manage product categories</li>
+                      <li>• Upload product images</li>
+                      <li>• Control stock quantities</li>
+                    </ul>
                   </motion.div>
                 </div>
               </div>

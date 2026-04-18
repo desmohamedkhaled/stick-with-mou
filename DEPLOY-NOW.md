@@ -20,25 +20,23 @@ Your **Stick with Mo** e-commerce site is completely ready for deployment. Here'
 - **Admin**: `admin@stickwithmo.com` / `admin123`
 - **User**: Any email and password
 
-## 🚀 Deploy to Vercel (Recommended)
+## 🚀 Deploy Your Site
 
 ### Step 1: Push to GitHub
 ```bash
 # If you have Git installed:
 git add .
-git commit -m "Deploy to Vercel - Complete e-commerce site"
+git commit -m "Deploy - Complete e-commerce site"
 git push origin main
 ```
 
-### Step 2: Connect to Vercel
-1. **Go to**: [vercel.com](https://vercel.com)
-2. **Sign in** with GitHub
-3. **Click "New Project"**
-4. **Import** your repository
-5. **Click "Deploy"**
+### Step 2: Choose Your Hosting Platform
+1. **Netlify** - Great for static sites
+2. **GitHub Pages** - Free for public repos
+3. **Firebase Hosting** - Google's platform
+4. **Any static hosting service**
 
 ### Step 3: Your Site is Live! 🎉
-- **URL**: `https://your-project-name.vercel.app`
 - **Auto-deploy**: Every push updates the site
 - **Global CDN**: Fast loading worldwide
 - **SSL**: Secure HTTPS connection
@@ -75,7 +73,7 @@ npm run build
 - **Follow**: [GIT-SETUP.md](GIT-SETUP.md)
 
 ### Need Detailed Instructions?
-- **Follow**: [VERCEL-DEPLOYMENT.md](VERCEL-DEPLOYMENT.md)
+- **Follow**: [DEPLOYMENT.md](DEPLOYMENT.md)
 
 ### Quick Reference?
 - **Check**: [QUICK-DEPLOY.md](QUICK-DEPLOY.md)
@@ -93,7 +91,7 @@ npm run build
 
 ## 📞 Support:
 
-- **Vercel Docs**: [vercel.com/docs](https://vercel.com/docs)
+- **Netlify Docs**: [docs.netlify.com](https://docs.netlify.com)
 - **GitHub Help**: [help.github.com](https://help.github.com)
 - **React Docs**: [reactjs.org](https://reactjs.org)
 
@@ -101,4 +99,4 @@ npm run build
 
 **🎉 Congratulations! Your e-commerce site is ready to go live!**
 
-**Next Step**: Push to GitHub and connect to Vercel for instant deployment!
+**Next Step**: Push to GitHub and deploy to your chosen hosting platform!

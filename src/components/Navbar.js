@@ -98,9 +98,9 @@ const Navbar = () => {
                 {user.role === 'admin' && (
                   <Link 
                     to="/admin" 
-                    className="hover:text-anzac transition-colors"
+                    className="hover:text-anzac transition-colors font-semibold bg-stiletto text-white px-3 py-1 rounded-md"
                   >
-                    Admin
+                    Admin Dashboard
                   </Link>
                 )}
                 <button
@@ -280,10 +280,10 @@ const Navbar = () => {
                       >
                         <Link
                           to="/admin"
-                          className="block px-3 py-2 hover:text-anzac transition-colors"
+                          className="block px-3 py-2 hover:text-anzac transition-colors font-semibold bg-stiletto text-white mx-3 rounded-md"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          Admin
+                          Admin Dashboard
                         </Link>
                       </motion.div>
                     )}

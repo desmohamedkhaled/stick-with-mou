@@ -6,10 +6,10 @@
 ```bash
 # 1. Push to GitHub
 git add .
-git commit -m "Deploy to Vercel"
+git commit -m "Deploy to hosting platform"
 git push origin main
 
-# 2. Go to vercel.com and import your repo
+# 2. Go to your chosen hosting platform and import your repo
 # 3. Your site will be live automatically!
 ```
 
@@ -48,7 +48,7 @@ git push origin main
 
 ## 🚀 Deploy Options
 
-### Vercel (Recommended)
+### Netlify (Recommended)
 - **Free hosting**
 - **Auto-deploy from GitHub**
 - **Global CDN**
@@ -63,7 +63,7 @@ git push origin main
 
 - **[QUICK-DEPLOY.md](QUICK-DEPLOY.md)** - 3-step deployment
 - **[GIT-SETUP.md](GIT-SETUP.md)** - Git installation guide
-- **[VERCEL-DEPLOYMENT.md](VERCEL-DEPLOYMENT.md)** - Detailed Vercel guide
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Detailed deployment guide
 - **[README.md](README.md)** - Full project documentation
 
 ## 🆘 Need Help?

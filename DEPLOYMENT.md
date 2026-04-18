@@ -2,22 +2,22 @@
 
 This guide covers different deployment options for the Stick with Mo frontend-only e-commerce application.
 
-## 🎯 Quick Deploy to Vercel
+## 🎯 Quick Deploy to Netlify
 
 ### 1. Push to GitHub
 ```bash
 git add .
-git commit -m "Deploy to Vercel"
+git commit -m "Deploy to Netlify"
 git push origin main
 ```
 
-### 2. Connect to Vercel
-1. Go to [vercel.com](https://vercel.com)
+### 2. Connect to Netlify
+1. Go to [netlify.com](https://netlify.com)
 2. Import your GitHub repository
-3. Vercel will auto-deploy!
+3. Netlify will auto-deploy!
 
 ### 3. Live Site
-Your site will be available at: `https://your-project.vercel.app`
+Your site will be available at: `https://your-project.netlify.app`
 
 ## 🚀 Deployment Options
 
@@ -57,20 +57,20 @@ npm run build
    git push heroku main
    ```
 
-### Vercel Deployment
+### Netlify Deployment
 
-1. **Install Vercel CLI**
+1. **Install Netlify CLI**
    ```bash
-   npm install -g vercel
+   npm install -g netlify-cli
    ```
 
 2. **Deploy**
    ```bash
-   vercel
+   netlify deploy
    ```
 
 3. **Configure Environment Variables**
-   - Add `REACT_APP_API_URL` in Vercel dashboard
+   - Add `REACT_APP_API_URL` in Netlify dashboard
 
 ### Netlify Deployment
 

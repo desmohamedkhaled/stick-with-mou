@@ -135,31 +135,31 @@ npm start
 npm run build
 ```
 
-### Deploy to Vercel (Recommended)
+### Deploy to Netlify (Recommended)
 
 1. **Push to GitHub**:
 ```bash
 git add .
-git commit -m "Deploy to Vercel"
+git commit -m "Deploy to Netlify"
 git push origin main
 ```
 
-2. **Connect to Vercel**:
-   - Go to [vercel.com](https://vercel.com)
+2. **Connect to Netlify**:
+   - Go to [netlify.com](https://netlify.com)
    - Import your GitHub repository
-   - Vercel will auto-deploy on every push!
+   - Netlify will auto-deploy on every push!
 
-3. **Live URL**: Your site will be available at `https://your-project.vercel.app`
+3. **Live URL**: Your site will be available at `https://your-project.netlify.app`
 
 ### Other Hosting Options
-- **Netlify** - Great for static sites
+- **Vercel** - Great for static sites
 - **GitHub Pages** - Free hosting for public repos
 - **Firebase Hosting** - Google's hosting platform
 
 No server configuration needed - just build and deploy the static files!
 
 ### 🎯 Live Demo
-**Visit the live site**: [https://stick-with-mo.vercel.app](https://stick-with-mo.vercel.app)
+**Visit the live site**: [https://stick-with-mo.netlify.app](https://stick-with-mo.netlify.app)
 
 ## 📱 Demo Accounts
 

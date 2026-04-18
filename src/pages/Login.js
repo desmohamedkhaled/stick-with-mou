@@ -164,6 +164,9 @@ const Login = () => {
               <p className="text-sm text-gray-600 mt-3">
                 <strong>Regular User:</strong> Use any email and password
               </p>
+              <p className="text-xs text-blue-600 mt-2">
+                <strong>Note:</strong> Admin Dashboard link will appear in the navigation after admin login
+              </p>
             </div>
           </div>
         </div>
