@@ -88,7 +88,7 @@ const ProductCard = ({ product, index = 0 }) => {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden product-bg-pattern">
         <motion.img
           src={getProductImage(product)}
           alt={product.name}
